@@ -1,0 +1,75 @@
+---
+title: "Introduction to Matrix Algebra"
+author: 'William Murrah'
+date: ''
+output:
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r, include=FALSE, }
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_knit$set(root.dir = "../../")
+opts_chunk$set(
+  comment = NULL,    
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)                
+```
+
+## Why should I learn matrix algebra?
+
+
+\[ \textbf{A} = \left[ \begin{array}{cccccc}
+a_{11} & a_{12} & ... & a_{1p}\\
+a_{21} & a_{22} & ... & a_{2p}\\
+ .     & .      & .  & . \\
+a_{n1} & a_{n2} & ... & a_{np}\end{array} \right],\] 
+
+which is referred to as a $n\times p$ matrix.
+
+A vector is a special kind of matrix used often in statistics. a row vector is a matrix with a single row and two or more columns, while a column vector is a vector with one column and two or more rows:
+
+row vector:
+
+\[x = \left[ \begin{array}{ccc}1, 3, 5,7\end{array} \right],\]
+
+column vector:
+
+\[ y = \left[\begin{array}{ccc}
+1\\ 3\\ 5\\7 \end{array}\right].\]
+
+Note that $x$ is a $1 \times 4$ row vector and $y$ is a $4 \times 1$ column matrix. The convention is that when the type of vector is not specified, it is a column vector. Think of variables in a data frame as iconic vectors, which are column vectors.
+
+A scalar can be thought of as a one dimensional matrix.
+
+## Matrix Operations
+
+
+
+```{r echo=FALSE}
+sessionInfo()  
+```
+  
