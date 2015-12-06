@@ -1,6 +1,6 @@
 Mplus VERSION 7.31 (Linux)
 MUTHEN & MUTHEN
-12/05/2015   2:31 PM
+12/06/2015  10:21 AM
 
 INPUT INSTRUCTIONS
 
@@ -19,10 +19,6 @@ INPUT INSTRUCTIONS
 
   MODEL:
       PA BY glad1 cheer1 happy1;
-
-
-  OUTPUT:
-   stdyx;
 
 
 
@@ -131,46 +127,14 @@ MODEL RESULTS
     HAPPY1             0.385      0.034     11.484      0.000
 
 
-STANDARDIZED MODEL RESULTS
-
-
-STDYX Standardization
-
-                                                    Two-Tailed
-                    Estimate       S.E.  Est./S.E.    P-Value
-
- PA       BY
-    GLAD1              0.718      0.023     30.688      0.000
-    CHEER1             0.769      0.022     34.310      0.000
-    HAPPY1             0.784      0.022     35.309      0.000
-
- Variances
-    PA                 1.000      0.000    999.000    999.000
-
- Residual Variances
-    GLAD1              0.485      0.034     14.434      0.000
-    CHEER1             0.408      0.035     11.823      0.000
-    HAPPY1             0.386      0.035     11.085      0.000
-
-
-R-SQUARE
-
-    Observed                                        Two-Tailed
-    Variable        Estimate       S.E.  Est./S.E.    P-Value
-
-    GLAD1              0.515      0.034     15.344      0.000
-    CHEER1             0.592      0.035     17.155      0.000
-    HAPPY1             0.614      0.035     17.654      0.000
-
-
 QUALITY OF NUMERICAL RESULTS
 
      Condition Number for the Information Matrix              0.753E-01
        (ratio of smallest to largest eigenvalue)
 
 
-     Beginning Time:  14:31:09
-        Ending Time:  14:31:09
+     Beginning Time:  10:21:23
+        Ending Time:  10:21:23
        Elapsed Time:  00:00:00
 
 
