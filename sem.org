@@ -1,0 +1,25 @@
+yes#+TITLE: Structural Equation Modeling Organization
+#+AUTHOR: William Murrah
+#+FILETAGS: :@work:teaching:statprog:
+
+
+
+#+CAPTION: SEM nomenclature conventions
+|--------+------------+------------+------------------------------------------------------------------|
+| name   | upper case | lower case | usage                                                            |
+|--------+------------+------------+------------------------------------------------------------------|
+|        | <c>        | <c>        |                                                                  |
+| Lambda | \Lambda    | \lambda    | Loading of a manifest indicator onto a latent construct          |
+| Psi    | \Psi       | \psi       | residual variance/covariance of contruct when endogenous         |
+| Phi    | \Phi       | \phi       | residual variance/covariance of contruct when exogenous          |
+| Theta  | \Theta     | \theta     | residual variance/covariance of indicators                       |
+| Beta   | \Beta      | \beta      | estimated regression of one construct on another                 |
+| Tau    | \Tau       | \tau       | intercept (mean) of indicator when \beta is zero                 |
+| Alpha  | \Alpha     | \alpha     | mean of a endogenous latent construct                            |
+| Gamma  | \Gamma     | \gamma     | estimatd regression when endogenous predicts exogenous construct |
+| Sigma  | \Sigma     | \sigma     | \Sigma is the model implied variance/covariance matrix;          |
+|        |            |            | \sigma is standard deviation, \sigma^2 variance of indicator.    |
+|        |            |            | \sigma can also be covariance of indicator                       |
+|--------+------------+------------+------------------------------------------------------------------|
+|        |            |            |                                                                  |
+  
