@@ -1,0 +1,18 @@
+TITLE: Regression Model
+
+DATA: 
+    FILE IS PAmeansdcorr2t.dat;
+    TYPE IS MEANS STD CORRELATION;
+    NOBSERVATIONS ARE 823;
+
+VARIABLE:
+     NAMES ARE glad1 cheer1 happy1 glad2 cheer2 happy2;
+     usevariables are cheer1;
+ANALYSIS: 
+    
+
+MODEL: 
+    Positive BY cheer1;
+    cheer1@.316;
+    
+    

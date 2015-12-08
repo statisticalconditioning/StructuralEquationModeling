@@ -1,0 +1,15 @@
+TITLE: Regression Model
+
+DATA: 
+    FILE IS PAcorr2t.dat;
+    TYPE IS CORRELATION;
+    NOBSERVATIONS ARE 823;
+
+VARIABLE:
+     NAMES ARE glad1 cheer1 happy1 glad2 cheer2 happy2;
+     usevariables are cheer1 cheer2;
+ANALYSIS: 
+    
+
+MODEL: 
+    cheer2 ON cheer1;
