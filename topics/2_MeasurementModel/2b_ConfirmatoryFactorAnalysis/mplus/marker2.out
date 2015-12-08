@@ -1,6 +1,6 @@
 Mplus VERSION 7.31 (Linux)
 MUTHEN & MUTHEN
-12/06/2015  10:24 AM
+12/08/2015   1:34 PM
 
 INPUT INSTRUCTIONS
 
@@ -18,16 +18,11 @@ INPUT INSTRUCTIONS
 
 
   MODEL:
-      PA BY glad1* cheer1@1
+      Positive BY glad1* cheer1 happy1;
 
 
 
-*** WARNING in MODEL command
-  Variable is uncorrelated with all other variables:  HAPPY1
-*** WARNING in MODEL command
-  At least one variable is uncorrelated with all other variables in the model.
-  Check that this is what is intended.
-   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+INPUT READING TERMINATED NORMALLY
 
 
 
@@ -48,7 +43,7 @@ Observed dependent variables
    GLAD1       CHEER1      HAPPY1
 
 Continuous latent variables
-   PA
+   POSITIVE
 
 
 Estimator                                                       ML
@@ -64,14 +59,17 @@ Input data format  FREE
 
 
 
+     THE DEGREES OF FREEDOM FOR THIS MODEL ARE NEGATIVE.  THE MODEL IS NOT
+     IDENTIFIED.  NO CHI-SQUARE TEST IS AVAILABLE.  CHECK YOUR MODEL.
+
 THE MODEL ESTIMATION TERMINATED NORMALLY
 
      THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
      COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
      PROBLEM INVOLVING THE FOLLOWING PARAMETER:
-     Parameter 5, PA
+     Parameter 7, POSITIVE
 
-     THE CONDITION NUMBER IS      -0.621D-16.
+     THE CONDITION NUMBER IS       0.105D-15.
 
 
 
@@ -79,28 +77,30 @@ MODEL RESULTS
 
                     Estimate
 
- PA       BY
-    GLAD1              1.047
-    CHEER1             1.000
+ POSITIVE BY
+    GLAD1              0.996
+    CHEER1             1.067
+    HAPPY1             1.087
 
  Variances
-    HAPPY1             0.999
-    PA                 0.527
+    POSITIVE           0.519
 
  Residual Variances
-    GLAD1              0.421
-    CHEER1             0.472
+    GLAD1              0.484
+    CHEER1             0.407
+    HAPPY1             0.385
 
 
 MODEL COMMAND WITH FINAL ESTIMATES USED AS STARTING VALUES
 
-     pa BY glad1*1.04687;
-     pa BY cheer1@1;
+     positive BY glad1*0.99559;
+     positive BY cheer1*1.06727;
+     positive BY happy1*1.08712;
 
-     glad1*0.42132;
-     cheer1*0.47189;
-     happy1*0.99869;
-     pa*0.52687;
+     glad1*0.48423;
+     cheer1*0.40745;
+     happy1*0.38523;
+     positive*0.51912;
 
 
 
@@ -111,42 +111,42 @@ TECHNICAL 1 OUTPUT
 
 
            LAMBDA
-              PA
+              POSITIVE
               ________
  GLAD1              1
- CHEER1             0
- HAPPY1             0
+ CHEER1             2
+ HAPPY1             3
 
 
            THETA
               GLAD1         CHEER1        HAPPY1
               ________      ________      ________
- GLAD1              2
- CHEER1             0             3
- HAPPY1             0             0             4
+ GLAD1              4
+ CHEER1             0             5
+ HAPPY1             0             0             6
 
 
            BETA
-              PA
+              POSITIVE
               ________
- PA                 0
+ POSITIVE           0
 
 
            PSI
-              PA
+              POSITIVE
               ________
- PA                 5
+ POSITIVE           7
 
 
      STARTING VALUES
 
 
            LAMBDA
-              PA
+              POSITIVE
               ________
  GLAD1          1.000
  CHEER1         1.000
- HAPPY1         0.000
+ HAPPY1         1.000
 
 
            THETA
@@ -158,20 +158,20 @@ TECHNICAL 1 OUTPUT
 
 
            BETA
-              PA
+              POSITIVE
               ________
- PA             0.000
+ POSITIVE       0.000
 
 
            PSI
-              PA
+              POSITIVE
               ________
- PA             0.050
+ POSITIVE       0.050
 
 
-     Beginning Time:  10:24:13
-        Ending Time:  10:24:13
-       Elapsed Time:  00:00:00
+     Beginning Time:  13:34:37
+        Ending Time:  13:34:38
+       Elapsed Time:  00:00:01
 
 
 

@@ -1,4 +1,4 @@
-#**************************************************************************
+gg#**************************************************************************
 # Scaling Measurement Models ----------------------------------------------
 # Author: William Murrah
 # Description: This code explores the methods for scaling measurement 
