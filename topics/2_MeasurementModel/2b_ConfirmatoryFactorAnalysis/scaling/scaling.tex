@@ -1,0 +1,66 @@
+% Created 2015-12-06 Sun 16:48
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{William Murrah}
+\date{\today}
+\title{Scaling and Identification of Measurement Models}
+\hypersetup{
+ pdfauthor={William Murrah},
+ pdftitle={Scaling and Identification of Measurement Models},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 24.4.1 (Org mode 8.3.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\begin{verbatim}
+;; fontify code in code blocks.
+(setq org-src-fontify-natively t)
+\end{verbatim}
+
+
+\section{Correlation Matrix}
+\label{sec:orgheadline1}
+\begin{verbatim}
+library(lavaan)
+cor <- "
+1.00000
+0.55226    1.00000
+0.56256    0.60307    1.00000
+0.31889    0.35898    0.27757    1.00000
+0.24363    0.35798    0.31889    0.56014    1.00000
+0.32217    0.36385    0.32072    0.56164    0.59738    1.00000"
+
+cormat <- getCov(cor, lower = TRUE, 
+		 names = c('glad1', 'cheer1', 'happy1',
+			   'glad2', 'cheer2', 'happy2'))
+\end{verbatim}
+
+
+\begin{center}
+\begin{tabular}{rrrrrr}
+1 & 0.55226 & 0.56256 & 0.31889 & 0.24363 & 0.32217\\
+0.55226 & 1 & 0.60307 & 0.35898 & 0.35798 & 0.36385\\
+0.56256 & 0.60307 & 1 & 0.27757 & 0.31889 & 0.32072\\
+0.31889 & 0.35898 & 0.27757 & 1 & 0.56014 & 0.56164\\
+0.24363 & 0.35798 & 0.31889 & 0.56014 & 1 & 0.59738\\
+0.32217 & 0.36385 & 0.32072 & 0.56164 & 0.59738 & 1\\
+\end{tabular}
+\end{center}
+\end{document}

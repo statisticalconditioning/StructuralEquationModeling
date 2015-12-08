@@ -1,0 +1,42 @@
+#+TITLE: Scaling and Identification of Measurement Models
+#+AUTHOR: William Murrah
+
+
+#+BEGIN_SRC elisp
+;; fontify code in code blocks.
+(setq org-src-fontify-natively t)
+
+#+END_SRC
+
+
+*** Correlation Matrix
+#+BEGIN_SRC R 
+library(lavaan)
+cor <- "
+1.00000
+0.55226    1.00000
+0.56256    0.60307    1.00000
+0.31889    0.35898    0.27757    1.00000
+0.24363    0.35798    0.31889    0.56014    1.00000
+0.32217    0.36385    0.32072    0.56164    0.59738    1.00000"
+
+cormat <- getCov(cor, lower = TRUE, 
+                 names = c('glad1', 'cheer1', 'happy1',
+                           'glad2', 'cheer2', 'happy2'))
+
+#+END_SRC
+
+
+#+RESULTS: :export results
+|       1 | 0.55226 | 0.56256 | 0.31889 | 0.24363 | 0.32217 |
+| 0.55226 |       1 | 0.60307 | 0.35898 | 0.35798 | 0.36385 |
+| 0.56256 | 0.60307 |       1 | 0.27757 | 0.31889 | 0.32072 |
+| 0.31889 | 0.35898 | 0.27757 |       1 | 0.56014 | 0.56164 |
+| 0.24363 | 0.35798 | 0.31889 | 0.56014 |       1 | 0.59738 |
+| 0.32217 | 0.36385 | 0.32072 | 0.56164 | 0.59738 |       1 |
+
+
+* Flow
+  1. data
+  2. l.cheer.inp
+  3. 

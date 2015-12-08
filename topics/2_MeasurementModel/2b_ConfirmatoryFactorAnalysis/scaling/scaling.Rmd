@@ -1,0 +1,99 @@
+---
+title: "Measurement Model Scaling and Identification"
+author: "William Murrah"
+date: ''
+output:
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_knit$set(root.dir ="../../../../")
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small"    # slightly smaller font for code
+)
+# This loads the mosaic data sets.  (Could be deleted if you are not using them.)
+require(mosaicData)  
+require(lavaan)
+```
+
+## 
+```{r}
+library(lavaan)
+
+##Prepare data with sufficient statisitics##
+mymeans<-matrix(c(3.06893, 2.92590, 3.11013), ncol=3,nrow=1)
+mysd<-c(0.84194,0.88934,0.83470)
+mat <- c(1.00000,
+         0.55226, 1.00000,
+         0.56256, 0.66307, 1.00000)
+mycor <- getCov(mat, lower = TRUE)
+##Transform correlation matrix to covariance matrix using information above##
+myvarcov <- outer(mysd, mysd, FUN="*")
+mycov <- mycor * myvarcov
+
+rownames(mycor) <-c( "Glad", "Cheerful", "Happy")
+colnames(mycor) <-c( "Glad", "Cheerful", "Happy")
+
+rownames(mycov) <-c( "Glad", "Cheerful", "Happy")
+colnames(mycov) <-c( "Glad", "Cheerful", "Happy")
+mynob<-823
+```
+
+### Descriptive Statistics
+  .      | Glad  | Cheerful | Happy
+---------|-------|----------|-------
+Glad     | 1.000 |          |          
+Cheerful | 0.552 | 1.000    |          
+Happy    | 0.563 | 0.663    | 1.000
+SD       | .842  | .889     | .835
+Var      | .709  | .791     | .697
+Mean     | 3.07  | 2.93     | 3.11
+
+### Fundamental SEM equation
+$$
+\Sigma = \Lambda \Psi \Lambda + \Theta \tag{1}
+$$
+
+
+### Latent Cheer with one indicator
+
+```
+l.cheer.inp
+```
+
+
+```{r}
+mod1<-'Positive =~ 1*Cheerful
+Positive~~Positive
+Cheerful~~0*Cheerful'
+#Save output to fit1##
+fit1<-cfa(mod1, sample.cov=mycov, sample.nobs = mynob, sample.mean=mymeans, 
+          std.lv=F)
+
+##Request for summary of output##
+summary(fit1, fit.measures=T)
+```
+
