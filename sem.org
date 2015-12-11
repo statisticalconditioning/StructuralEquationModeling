@@ -1,4 +1,4 @@
-yes#+TITLE: Structural Equation Modeling Organization
+#+TITLE: Structural Equation Modeling Organization
 #+AUTHOR: William Murrah
 #+FILETAGS: :@work:teaching:statprog:
 
