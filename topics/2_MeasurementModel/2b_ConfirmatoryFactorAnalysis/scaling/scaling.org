@@ -40,3 +40,33 @@ cormat <- getCov(cor, lower = TRUE,
   1. data
   2. l.cheer.inp
   3. 
+
+
+#+BEGIN_SRC dot :file myfile.png
+digraph CFA {
+	
+# Define node
+node [shape = circle]
+Positive;
+
+node [shape = box]
+Glad; Cheer; Happy;
+
+# Define edges
+Positive -> Glad [label = <&lambda;<sub>1</sub>>];
+Positive -> Cheer [label = <&lambda;<sub>2</sub>>];
+Positive -> Happy [label = <&lambda;<sub>3</sub>>];
+Positive:n -> Positive:n [dir=both, label = <&psi;>,position = N]
+Glad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]
+Cheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]
+Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
+
+	{rank = same; Positive;}
+	{rank = same; Glad; Cheer; Happy;}
+}  
+
+#+END_SRC
+
+#+RESULTS:
+[[file:myfile.png]]
+

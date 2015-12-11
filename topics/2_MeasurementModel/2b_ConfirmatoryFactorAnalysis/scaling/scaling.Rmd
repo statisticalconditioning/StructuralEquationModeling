@@ -3,10 +3,10 @@ title: "Measurement Model Scaling and Identification"
 author: "William Murrah"
 date: ''
 output:
-  pdf_document:
+  html_document:
     fig_height: 3
     fig_width: 5
-  html_document:
+  pdf_document:
     fig_height: 3
     fig_width: 5
   word_document:
@@ -37,6 +37,9 @@ opts_chunk$set(
 # This loads the mosaic data sets.  (Could be deleted if you are not using them.)
 require(mosaicData)  
 require(lavaan)
+require(ztable)
+options(ztable.type = 'html', ztable.zebra.color="platinum")
+library(DiagrammeR)
 ```
 
 ## 
@@ -62,15 +65,16 @@ colnames(mycov) <-c( "Glad", "Cheerful", "Happy")
 mynob<-823
 ```
 
-### Descriptive Statistics
-  .      | Glad  | Cheerful | Happy
----------|-------|----------|-------
-Glad     | 1.000 |          |          
-Cheerful | 0.552 | 1.000    |          
-Happy    | 0.563 | 0.663    | 1.000
-SD       | .842  | .889     | .835
-Var      | .709  | .791     | .697
-Mean     | 3.07  | 2.93     | 3.11
+
+```{r, results = 'asis'}
+cr <- ztable(mycor, zebra = 2)
+tab <- data.frame(Mean = round(mymeans[1, ], 3), SD = round(mysd, 3), 
+                  Var = round(mysd*mysd, 3))
+
+pt <- t(cbind(mycor, tab))
+ztable(pt, zebra = 2, caption = "Descriptive Statistics")
+
+```
 
 ### Fundamental SEM equation
 $$
@@ -80,10 +84,37 @@ $$
 
 ### Latent Cheer with one indicator
 
-```
-l.cheer.inp
+```{r}
+
 ```
 
+```
+# Mplus file
+l.cheer.inp
+```
+```{r}
+grViz("
+digraph Cheer {
+
+node [shape = circle]
+Positive;
+
+node [shape = box]
+Cheer;
+
+# Edges
+
+Positive -> Cheer [label = <&lambda;>];
+Positive:n -> Positive:n [dir=both, label = <&psi;>,position = N]
+Cheer:s -> Cheer:s [dir=both, label = <&theta;>]
+}  
+")
+```
+
+
+### Measurement Model: 3 indicators
+
+ using correlations only (instead of variance/covariance matirx)
 
 ```{r}
 mod1<-'Positive =~ 1*Cheerful
@@ -95,5 +126,32 @@ fit1<-cfa(mod1, sample.cov=mycov, sample.nobs = mynob, sample.mean=mymeans,
 
 ##Request for summary of output##
 summary(fit1, fit.measures=T)
+```
+
+```{r}
+grViz("
+    
+digraph CFA {
+
+node [shape = circle]
+Positive;
+
+node [shape = box]
+Glad; Cheer; Happy;
+
+# Edges
+Positive -> Glad [label = <&lambda;<sub>1</sub>>];
+Positive -> Cheer [label = <&lambda;<sub>2</sub>>];
+Positive -> Happy [label = <&lambda;<sub>3</sub>>];
+Positive:n -> Positive:n [dir=both, label = <&psi;>]
+Glad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]
+Cheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]
+Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
+
+	{rank = same; Positive;}
+	{rank = same; Glad; Cheer; Happy;}
+}  
+")
+
 ```
 
