@@ -31,6 +31,8 @@ trellis.par.set(theme=theme.mosaic())
 require(knitr)
 opts_knit$set(root.dir ="../../../../")
 opts_chunk$set(
+  echo = FALSE,
+  comment = NULL,
   tidy=FALSE,     # display code as typed
   size="small"    # slightly smaller font for code
 )
@@ -43,7 +45,7 @@ library(DiagrammeR)
 ```
 
 ## 
-```{r}
+```{r, echo = TRUE}
 library(lavaan)
 
 ##Prepare data with sufficient statisitics##
@@ -104,7 +106,7 @@ Cheer;
 
 # Edges
 
-Positive -> Cheer [label = <&lambda;>];
+Positive -> Cheer [label = <&nbsp;&lambda;>];
 Positive:n -> Positive:n [dir=both, label = <&psi;>,position = N]
 Cheer:s -> Cheer:s [dir=both, label = <&theta;>]
 }  
@@ -125,7 +127,14 @@ fit1<-cfa(mod1, sample.cov=mycov, sample.nobs = mynob, sample.mean=mymeans,
           std.lv=F)
 
 ##Request for summary of output##
+
+
 summary(fit1, fit.measures=T)
+```
+
+```{r, echo = TRUE}
+cat(file = 'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/l.cheer.out')
+
 ```
 
 ```{r}
@@ -140,9 +149,9 @@ node [shape = box]
 Glad; Cheer; Happy;
 
 # Edges
-Positive -> Glad [label = <&lambda;<sub>1</sub>>];
-Positive -> Cheer [label = <&lambda;<sub>2</sub>>];
-Positive -> Happy [label = <&lambda;<sub>3</sub>>];
+Positive -> Glad [label = <&nbsp;&lambda;<sub>1</sub>>];
+Positive -> Cheer [label = <&nbsp;&lambda;<sub>2</sub>>];
+Positive -> Happy [label = <&nbsp;&lambda;<sub>3</sub>>];
 Positive:n -> Positive:n [dir=both, label = <&psi;>]
 Glad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]
 Cheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]
@@ -154,4 +163,3 @@ Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
 ")
 
 ```
-
