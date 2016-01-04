@@ -1,0 +1,62 @@
+---
+title: "Regression Fundamentals"
+author: "William Murrah"
+date: ""
+output: 
+  html_document:
+    fig_height: 3
+    fig_width: 5
+  pdf_document:
+    fig_height: 3
+    fig_width: 5
+  word_document:
+    fig_height: 3
+    fig_width: 5
+---
+
+
+```{r, include=FALSE}
+# Don't delete this chunk if you are using the mosaic package
+# This loads the mosaic and dplyr packages
+require(mosaic)
+```
+
+```{r, include=FALSE}
+# Some customization.  You can alter or delete as desired (if you know what you are doing).
+
+# This changes the default colors in lattice plots.
+trellis.par.set(theme=theme.mosaic())  
+
+# knitr settings to control how R chunks work.
+require(knitr)
+opts_knit$set(root.dir = "../../../")
+opts_chunk$set(
+  tidy=FALSE,     # display code as typed
+  size="small",    # slightly smaller font for code
+  comment = NULL
+)
+require(ztable)
+options(ztable.type = 'html', ztable.include.rownames = FALSE)
+require(ggplot2)
+```
+
+```{r, results='asis'}
+data <- read.csv(file = 'data/bivariate.csv', header = TRUE)
+ztable(data)
+```
+
+```{r}
+Ymod <- lm(Y ~ X, data)
+summary(Ymod)
+```
+
+```{r}
+ggplot(data, aes(x = X, y = Y)) + geom_point() +
+     geom_smooth(method = lm)
+```
+
+  
+```{r echo=FALSE}
+sessionInfo()  # could use devtools::session_info() if you prefer that
+```
+  
