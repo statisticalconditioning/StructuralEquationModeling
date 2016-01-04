@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 
+<meta name="author" content="William Murrah" />
 
 
 <title>Introduction to Matrix Algebra</title>
@@ -61,58 +62,104 @@ img {
 
 <div id="header">
 <h1 class="title">Introduction to Matrix Algebra</h1>
+<h4 class="author"><em>William Murrah</em></h4>
 </div>
 
 
 <div id="why-should-i-learn-matrix-algebra" class="section level2">
 <h2>Why should I learn matrix algebra?</h2>
-<p><span class="math">\[
-A_{ij} = 
-\begin{cases}
-  \text{1 if there is an edge between vertex \emph{i} and \emph{j},} \\
-  \text{0 otherise.}
-\end{cases} \tag*{(6.1)}
-\]</span></p>
-<p><span class="math">\[ \textbf{A} = \left( \begin{array}{cccccc}
-0&amp;1&amp;0&amp;0&amp;1&amp;0\\
-1&amp;0&amp;1&amp;1&amp;0&amp;0\\
-0&amp;1&amp;0&amp;1&amp;1&amp;1\\ \tag*{(6.2)}
-0&amp;1&amp;1&amp;0&amp;0&amp;0\\
-1&amp;0&amp;1&amp;0&amp;0&amp;0\\
-0&amp;0&amp;1&amp;0&amp;0&amp;0 \end{array} \right).\]</span></p>
-<pre><code>## R version 3.2.2 (2015-08-14)
-## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 14.04.3 LTS
-## 
-## locale:
-##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
-##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
-##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
-##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
-##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
-## 
-## attached base packages:
-## [1] stats     graphics  grDevices utils     datasets  methods   base     
-## 
-## other attached packages:
-## [1] knitr_1.11       mosaic_0.12      mosaicData_0.9.1 car_2.1-0       
-## [5] ggplot2_1.0.1    lattice_0.20-33  dplyr_0.4.3     
-## 
-## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.2        formatR_1.2.1      nloptr_1.0.4      
-##  [4] plyr_1.8.3         tools_3.2.2        digest_0.6.8      
-##  [7] lme4_1.1-10        evaluate_0.8       gtable_0.1.2      
-## [10] nlme_3.1-122       mgcv_1.8-9         Matrix_1.2-2      
-## [13] DBI_0.3.1          yaml_2.1.13        parallel_3.2.2    
-## [16] SparseM_1.7        ggdendro_0.1-17    proto_0.3-10      
-## [19] gridExtra_2.0.0    stringr_1.0.0      MatrixModels_0.4-1
-## [22] grid_3.2.2         nnet_7.3-11        R6_2.1.1          
-## [25] rmarkdown_0.8.1    minqa_1.2.4        reshape2_1.4.1    
-## [28] magrittr_1.5       scales_0.3.0       htmltools_0.2.6   
-## [31] MASS_7.3-45        splines_3.2.2      assertthat_0.1    
-## [34] pbkrtest_0.4-2     colorspace_1.2-6   quantreg_5.19     
-## [37] stringi_1.0-1      munsell_0.4.2</code></pre>
+<p>For at least two reasons, one</p>
+<blockquote>
+<p>[Matrix algebra (MA)] furnishes a compact language that unifies important aspects of univariate and mutivariate statistics. In this way, MA allows one to understand mutivariable techniques using their univariate analogues and counterparts <span class="citation">(Raykov and Marcoulides 2011, 21)</span>.</p>
+</blockquote>
+<p>General notation for a matrix:</p>
+<p><span class="math">\[ \textbf{A} = \left[ \begin{array}{cccccc}
+a_{11} &amp; a_{12} &amp; ... &amp; a_{1p}\\
+a_{21} &amp; a_{22} &amp; ... &amp; a_{2p}\\
+ .     &amp; .      &amp; .  &amp; . \\
+a_{n1} &amp; a_{n2} &amp; ... &amp; a_{np}\end{array} \right],\]</span></p>
+<p>which is referred to as a <span class="math">\(n\times p\)</span> matrix.</p>
+<p>A vector is a special kind of matrix used often in statistics. a row vector is a matrix with a single row and two or more columns, while a column vector is a vector with one column and two or more rows:</p>
+<p>row vector:</p>
+<p><span class="math">\[x = \left[ \begin{array}{ccc}1, 3, 5,7\end{array} \right],\]</span></p>
+<p>column vector:</p>
+<p><span class="math">\[ y = \left[\begin{array}{ccc}
+1\\ 3\\ 5\\7 \end{array}\right].\]</span></p>
+<p>Note that <span class="math">\(x\)</span> is a <span class="math">\(1 \times 4\)</span> row vector and <span class="math">\(y\)</span> is a <span class="math">\(4 \times 1\)</span> column matrix. The convention is that when the type of vector is not specified, it is a column vector. Think of variables in a data frame as iconic vectors, which are column vectors.</p>
+<p>A scalar can be thought of as a one dimensional matrix.</p>
+</div>
+<div id="matrix-operations" class="section level2">
+<h2>Matrix Operations</h2>
+<p>Two matrices are equal if: a. they have the same dimensions b. each element in one is identical to the element in the same position in the other.</p>
+<p><span class="math">\[ \textbf{C} = \left[ \begin{array}{cc}
+2 &amp; 3\\
+3 &amp; 2\\
+4 &amp; 2
+\end{array} \right] \neq 
+%
+\left[ \begin{array}{cc}
+2 &amp; 2\\
+3 &amp; 3\\
+4 &amp; 2
+\end{array} \right]  = \textbf{D},\]</span></p>
+<p><span class="math">\[ \textbf{E} = \left[ \begin{array}{cc}
+1 &amp; 4\\
+2 &amp; 5\\
+3 &amp; 6
+\end{array} \right] \neq 
+%
+\left[ \begin{array}{cc}
+4 &amp; 1\\
+5 &amp; 2\\
+6 &amp; 3
+\end{array} \right]  = \textbf{F},\]</span></p>
+<p><span class="math">\[ \textbf{G} = \left[ \begin{array}{cc}
+1 &amp; 4\\
+2 &amp; 5\\
+3 &amp; 6
+\end{array} \right] \neq 
+%
+\left[ \begin{array}{ccc}
+1 &amp; 2 &amp; 3\\
+4 &amp; 5 &amp; 6
+\end{array} \right]  = \textbf{H}.\]</span></p>
+<pre><code>R version 3.2.2 (2015-08-14)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 14.04.3 LTS
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] knitr_1.11        mosaic_0.13.0     mosaicData_0.13.0 car_2.1-1        
+[5] ggplot2_2.0.0     lattice_0.20-33   dplyr_0.4.3      
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_0.12.2        formatR_1.2.1      nloptr_1.0.4      
+ [4] plyr_1.8.3         tools_3.2.2        digest_0.6.8      
+ [7] lme4_1.1-10        evaluate_0.8       gtable_0.1.2      
+[10] nlme_3.1-122       mgcv_1.8-10        Matrix_1.2-3      
+[13] DBI_0.3.1          yaml_2.1.13        parallel_3.2.2    
+[16] SparseM_1.7        ggdendro_0.1-17    gridExtra_2.0.0   
+[19] stringr_1.0.0      MatrixModels_0.4-1 grid_3.2.2        
+[22] nnet_7.3-11        R6_2.1.1           rmarkdown_0.9.2   
+[25] minqa_1.2.4        reshape2_1.4.1     magrittr_1.5      
+[28] scales_0.3.0       htmltools_0.3      MASS_7.3-45       
+[31] splines_3.2.2      assertthat_0.1     pbkrtest_0.4-4    
+[34] colorspace_1.2-6   quantreg_5.19      stringi_1.0-1     
+[37] munsell_0.4.2     </code></pre>
+<div class="references">
+<h1>References</h1>
+<p>Raykov, Tenko, and George A Marcoulides. 2011. <em>Introduction to Psychometric Theory</em>. Routledge.</p>
+</div>
 </div>
 
 

@@ -1,17 +1,18 @@
 ---
 title: "Introduction to Matrix Algebra"
-author: 'William Murrah'
+author: "William Murrah"
 date: ''
 output:
-  pdf_document:
+  html_document:
     fig_height: 3
     fig_width: 5
-  html_document:
+  pdf_document:
     fig_height: 3
     fig_width: 5
   word_document:
     fig_height: 3
     fig_width: 5
+bibliography: ref.bib
 ---
 
 
@@ -41,6 +42,12 @@ require(mosaicData)
 
 ## Why should I learn matrix algebra?
 
+For at least two reasons, one 
+
+> [Matrix algebra (MA)] furnishes a compact language that unifies important aspects of univariate and mutivariate statistics. In this way, MA allows one to understand mutivariable techniques using their univariate analogues and counterparts [@raykov2011introduction, p. 21].
+
+
+General notation for a matrix:
 
 \[ \textbf{A} = \left[ \begin{array}{cccccc}
 a_{11} & a_{12} & ... & a_{1p}\\
@@ -67,9 +74,49 @@ A scalar can be thought of as a one dimensional matrix.
 
 ## Matrix Operations
 
+Two matrices are equal if:
+  a. they have the same dimensions
+  b. each element in one is identical to the element in the same position in the other.
+  
+\[ \textbf{C} = \left[ \begin{array}{cc}
+2 & 3\\
+3 & 2\\
+4 & 2
+\end{array} \right] \neq 
+%
+\left[ \begin{array}{cc}
+2 & 2\\
+3 & 3\\
+4 & 2
+\end{array} \right]  = \textbf{D},\]
 
+\[ \textbf{E} = \left[ \begin{array}{cc}
+1 & 4\\
+2 & 5\\
+3 & 6
+\end{array} \right] \neq 
+%
+\left[ \begin{array}{cc}
+4 & 1\\
+5 & 2\\
+6 & 3
+\end{array} \right]  = \textbf{F},\]
+
+
+\[ \textbf{G} = \left[ \begin{array}{cc}
+1 & 4\\
+2 & 5\\
+3 & 6
+\end{array} \right] \neq 
+%
+\left[ \begin{array}{ccc}
+1 & 2 & 3\\
+4 & 5 & 6
+\end{array} \right]  = \textbf{H}.\]
 
 ```{r echo=FALSE}
 sessionInfo()  
 ```
+  
+# References
   
