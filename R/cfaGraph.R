@@ -23,6 +23,6 @@ Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
 	{rank = same; Glad; Cheer; Happy;}
 }  
 ")
-
+dt
 gr <- create_graph()
 render_graph("topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/scaling/graph.gv")

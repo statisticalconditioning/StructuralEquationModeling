@@ -1,6 +1,6 @@
-Mplus VERSION 7.31 (Linux)
+Mplus VERSION 7.2
 MUTHEN & MUTHEN
-12/08/2015   1:34 PM
+01/12/2016   2:41 PM
 
 INPUT INSTRUCTIONS
 
@@ -18,7 +18,7 @@ INPUT INSTRUCTIONS
 
 
   MODEL:
-      Positive BY glad1* cheer1 happy1;
+      Positive BY glad1* cheer1@1 happy1;
 
 
 
@@ -59,119 +59,83 @@ Input data format  FREE
 
 
 
-     THE DEGREES OF FREEDOM FOR THIS MODEL ARE NEGATIVE.  THE MODEL IS NOT
-     IDENTIFIED.  NO CHI-SQUARE TEST IS AVAILABLE.  CHECK YOUR MODEL.
-
 THE MODEL ESTIMATION TERMINATED NORMALLY
 
-     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
-     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
-     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
-     Parameter 7, POSITIVE
 
-     THE CONDITION NUMBER IS       0.105D-15.
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                        6
+
+Loglikelihood
+
+          H0 Value                       -3113.927
+          H1 Value                       -3113.927
+
+Information Criteria
+
+          Akaike (AIC)                    6239.853
+          Bayesian (BIC)                  6268.131
+          Sample-Size Adjusted BIC        6249.077
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                              0.000
+          Degrees of Freedom                     0
+          P-Value                           0.0000
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.000
+          90 Percent C.I.                    0.000  0.000
+          Probability RMSEA <= .05           0.000
+
+CFI/TLI
+
+          CFI                                1.000
+          TLI                                1.000
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                            775.863
+          Degrees of Freedom                     3
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.000
 
 
 
 MODEL RESULTS
 
-                    Estimate
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
 
  POSITIVE BY
-    GLAD1              0.996
-    CHEER1             1.067
-    HAPPY1             1.087
+    GLAD1              0.933      0.053     17.610      0.000
+    CHEER1             1.000      0.000    999.000    999.000
+    HAPPY1             1.019      0.057     17.943      0.000
 
  Variances
-    POSITIVE           0.519
+    POSITIVE           0.591      0.052     11.315      0.000
 
  Residual Variances
-    GLAD1              0.484
-    CHEER1             0.407
-    HAPPY1             0.385
+    GLAD1              0.484      0.033     14.550      0.000
+    CHEER1             0.407      0.033     12.209      0.000
+    HAPPY1             0.385      0.034     11.482      0.000
 
 
-MODEL COMMAND WITH FINAL ESTIMATES USED AS STARTING VALUES
+QUALITY OF NUMERICAL RESULTS
 
-     positive BY glad1*0.99559;
-     positive BY cheer1*1.06727;
-     positive BY happy1*1.08712;
-
-     glad1*0.48423;
-     cheer1*0.40745;
-     happy1*0.38523;
-     positive*0.51912;
+     Condition Number for the Information Matrix              0.853E-01
+       (ratio of smallest to largest eigenvalue)
 
 
-
-TECHNICAL 1 OUTPUT
-
-
-     PARAMETER SPECIFICATION
-
-
-           LAMBDA
-              POSITIVE
-              ________
- GLAD1              1
- CHEER1             2
- HAPPY1             3
-
-
-           THETA
-              GLAD1         CHEER1        HAPPY1
-              ________      ________      ________
- GLAD1              4
- CHEER1             0             5
- HAPPY1             0             0             6
-
-
-           BETA
-              POSITIVE
-              ________
- POSITIVE           0
-
-
-           PSI
-              POSITIVE
-              ________
- POSITIVE           7
-
-
-     STARTING VALUES
-
-
-           LAMBDA
-              POSITIVE
-              ________
- GLAD1          1.000
- CHEER1         1.000
- HAPPY1         1.000
-
-
-           THETA
-              GLAD1         CHEER1        HAPPY1
-              ________      ________      ________
- GLAD1          0.250
- CHEER1         0.000         0.250
- HAPPY1         0.000         0.000         0.250
-
-
-           BETA
-              POSITIVE
-              ________
- POSITIVE       0.000
-
-
-           PSI
-              POSITIVE
-              ________
- POSITIVE       0.050
-
-
-     Beginning Time:  13:34:37
-        Ending Time:  13:34:38
-       Elapsed Time:  00:00:01
+     Beginning Time:  14:41:22
+        Ending Time:  14:41:22
+       Elapsed Time:  00:00:00
 
 
 
@@ -184,4 +148,4 @@ Fax: (310) 391-8971
 Web: www.StatModel.com
 Support: Support@StatModel.com
 
-Copyright (c) 1998-2015 Muthen & Muthen
+Copyright (c) 1998-2014 Muthen & Muthen
