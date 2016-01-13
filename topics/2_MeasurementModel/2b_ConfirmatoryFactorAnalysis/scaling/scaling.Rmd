@@ -49,7 +49,7 @@ library(DiagrammeR)
 
 
 
-#+CAPTION: SEM nomenclature conventions
+### SEM nomenclature conventions
 
 | name   | upper case   | lower case   | usage                                                            |
 |--------|----------------|------------|------------------------------------------------------------------|
