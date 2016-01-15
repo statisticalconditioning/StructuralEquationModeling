@@ -1,18 +1,6 @@
----
-title: "Measurement Model Scaling and Identification"
-author: "William Murrah"
-date: ''
-output:
-  html_document:
-    fig_height: 3
-    fig_width: 5
-  pdf_document:
-    fig_height: 3
-    fig_width: 5
-  word_document:
-    fig_height: 3
-    fig_width: 5
----
+# Measurement Model Scaling and Identification
+William Murrah  
+  
 
 
 
@@ -22,9 +10,67 @@ output:
 
 ## Conventional Drawing and Labeling of SEM Model
 
-<!--html_preserve--><div id="htmlwidget-5679" style="width:504px;height:504px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-5679">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nConstruct_1;\n\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\n\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;>]\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1</sub>>]\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2</sub>>]\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Construct_1;}\n\t{rank = same; indicator_1; indicator_2; indicator_3;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
-## 
+
+
+### SEM nomenclature conventions
+
+| name   | upper case   | lower case   | usage                                                            |
+|--------|----------------|------------|------------------------------------------------------------------|
+| Lambda |$\Lambda$     | $\lambda$    | Loading of a manifest indicator onto a latent construct          |
+| Psi    | $\Psi$       | $\psi$       | residual variance/covariance of contruct when endogenous         |
+| Theta  | $\Theta$     | $\theta$     | residual variance/covariance of indicators                       |
+| Sigma  | $\Sigma$     | $\sigma$     | $\Sigma$ is the model implied variance/covariance matrix;        |
+|        |              |              | $\sigma$ is standard deviation, $\sigma^2$ variance of indicator.|
+|        |              |              | $\sigma$ can also be covariance of indicator                     |
+
+
+<!--html_preserve--><div id="htmlwidget-8897" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-8897">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct_1;\nConstruct_2;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\nindicator_4; indicator_5; indicator_6;\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\nConstruct_2 -> indicator_4 [label = <&nbsp;&lambda;<sub>1,2</sub>>];\nConstruct_2 -> indicator_5 [label = <&nbsp;&lambda;<sub>2,2</sub>>];\nConstruct_2 -> indicator_6 [label = <&nbsp;&lambda;<sub>3,2</sub>>];\nConstruct_2:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,2</sub>>];\n\nindicator_4:s -> indicator_4:s [dir=both, label = <&theta;<sub>4,4</sub>>];\nindicator_5:s -> indicator_5:s [dir=both, label = <&theta;<sub>5,5</sub>>];\nindicator_6:s -> indicator_6:s [dir=both, label = <&theta;<sub>6,6</sub>>];\n\nConstruct_1:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,1</sub>>];\n\n{rank = same; Construct_1; Construct_2}\n{rank = same; indicator_1; indicator_2; indicator_3; \nindicator_4; indicator_5; indicator_6;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+\[ \textbf{$\Sigma$} = \left[ \begin{array}{cccccc}
+\sigma_{1,1}^2 & \sigma_{1,2} & \sigma_{1,3} & \sigma_{1,4} & \sigma_{1,5} & \sigma_{1,6} \\
+\sigma_{2,1} & \sigma_{2,2}^2 & \sigma_{2,3} & \sigma_{2,4} & \sigma_{2,5} & \sigma_{2,6} \\
+\sigma_{3,1} & \sigma_{3,2} & \sigma_{3,3}^2 & \sigma_{3,4} & \sigma_{3,5} & \sigma_{3,6} \\
+\sigma_{4,1} & \sigma_{4,2} & \sigma_{4,3} & \sigma_{4,4}^2 &  \sigma_{4,5} & \sigma_{4,6} \\
+\sigma_{5,1} & \sigma_{5,2} & \sigma_{5,3} & \sigma_{5,4} & \sigma_{5,5}^2 & \sigma_{5,6} \\
+\sigma_{6,1} & \sigma_{6,2} & \sigma_{6,3} & \sigma_{6,4} & \sigma_{6,5} & \sigma_{6,6}^2 
+\end{array} \right],\] 
+
+\[ \textbf{$\Lambda$} = \left[ \begin{array}{cc}
+\lambda_{1,1} & \lambda_{1,2} \\
+\lambda_{2,1} & \lambda_{2,2} \\
+\lambda_{3,1} & \lambda_{3,2}
+\end{array} \right],\] 
+
+\[ \textbf{$\Psi$} = \left[ \begin{array}{cc}
+\psi_{1,1} & \psi_{1,2} \\
+\psi_{2,1} & \psi_{2,2}
+\end{array} \right],\] 
+
+\[ \textbf{$\Lambda^\prime$} = \left[ \begin{array}{cc}
+\lambda_{1,1} & \lambda_{2,1} & \lambda_{3,1} \\
+\lambda_{1,2} & \lambda_{2,2} & \lambda_{3,2}
+\end{array} \right],\] 
+
+\[ \textbf{$\Theta$} = \left[ \begin{array}{cccccc}
+\theta_{1,1} & 0 & 0 & 0 & 0 & 0 \\
+0 & \theta_{2,2} & 0 & 0 & 0 & 0 \\
+0 & 0 & \theta_{3,3} & 0 & 0 & 0 \\
+0 & 0 & 0 & \theta_{4,4} &  0 & 0 \\
+0 & 0 & 0 & 0 & \theta_{5,5} & 0 \\
+0 & 0 & 0 & 0 & 0 & \theta_{6,6} 
+\end{array} \right].\] 
+
+### Fundamental SEM equation
+
+$$
+\Sigma = \Lambda \Psi \Lambda' + \Theta \tag{1}
+$$
+
+## Unidimensional Measurement Model
+
+<!--html_preserve--><div id="htmlwidget-4260" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-4260">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+
 
 ```r
 library(lavaan)
@@ -36,9 +82,9 @@ mat <- c(1.00000,
          0.55226, 1.00000,
          0.56256, 0.66307, 1.00000)
 mycor <- getCov(mat, lower = TRUE)
+
 ##Transform correlation matrix to covariance matrix using information above##
-myvarcov <- outer(mysd, mysd, FUN="*")
-mycov <- mycor * myvarcov
+mycov <- mysd %*% t(mysd)
 
 rownames(mycor) <-c( "Glad", "Cheerful", "Happy")
 colnames(mycor) <-c( "Glad", "Cheerful", "Happy")
@@ -47,6 +93,9 @@ rownames(mycov) <-c( "Glad", "Cheerful", "Happy")
 colnames(mycov) <-c( "Glad", "Cheerful", "Happy")
 mynob<-823
 ```
+
+
+
 
 
 <head><style>
@@ -104,23 +153,6 @@ mynob<-823
 <td colspan="4" align="left" style="font-size:9pt ;border-top: 1px solid black; border-bottom: hidden;"></td>
 </tr>
 </table>
-
-### Fundamental SEM equation
-$$
-\Sigma = \Lambda \Psi \Lambda + \Theta \tag{1}
-$$
-
-
-### Latent Cheer with one indicator
-
-
-
-```
-# Mplus file
-l.cheer.inp
-```
-<!--html_preserve--><div id="htmlwidget-961" style="width:504px;height:504px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-961">{"x":{"diagram":"\ndigraph Cheer {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nCheer;\n\n# Edges\n\nPositive -> Cheer [label = <&nbsp;&lambda;>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nCheer:s -> Cheer:s [dir=both, label = <&theta;>]\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 
 ### Measurement Model: 3 indicators
@@ -193,5 +225,92 @@ Variances:
 cat(file = 'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/l.cheer.out')
 ```
 
-<!--html_preserve--><div id="htmlwidget-5598" style="width:504px;height:504px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-5598">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&nbsp;&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&nbsp;&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&nbsp;&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-8570" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-8570">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&nbsp;&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&nbsp;&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&nbsp;&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+
+
+
+```
+Warning in lav_samplestats_from_moments(sample.cov = sample.cov,
+sample.mean = sample.mean, : lavaan WARNING: sample covariance can not be
+inverted
+```
+
+```
+lavaan (0.5-20) converged normally after  99 iterations
+
+  Number of observations                           823
+
+  Estimator                                         ML
+  Minimum Function Test Statistic                0.000
+  Degrees of freedom                                 0
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  Z-value  P(>|z|)
+  Positive =~                                         
+    Glad              0.841    0.021   40.570    0.000
+    Cheerful          0.889    0.022   40.570    0.000
+    Happy             0.834    0.021   40.570    0.000
+
+Variances:
+                   Estimate  Std.Err  Z-value  P(>|z|)
+    Glad              0.000    0.000   13.060    0.000
+    Cheerful          0.000    0.000   12.213    0.000
+    Happy             0.000    0.000   13.191    0.000
+    Positive          1.000                           
+```
+
+
+
+
+
+<!--html_preserve--><div id="htmlwidget-5896" style="width:576px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-5896">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct_1;\nConstruct_2;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\nindicator_4; indicator_5; indicator_6;\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\nConstruct_2 -> indicator_4 [label = <&nbsp;&lambda;<sub>1,2</sub>>];\nConstruct_2 -> indicator_5 [label = <&nbsp;&lambda;<sub>2,2</sub>>];\nConstruct_2 -> indicator_6 [label = <&nbsp;&lambda;<sub>3,2</sub>>];\nConstruct_2:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,2</sub>>];\n\nindicator_4:s -> indicator_4:s [dir=both, label = <&theta;<sub>4,4</sub>>];\nindicator_5:s -> indicator_5:s [dir=both, label = <&theta;<sub>5,5</sub>>];\nindicator_6:s -> indicator_6:s [dir=both, label = <&theta;<sub>6,6</sub>>];\n\nConstruct_1:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,1</sub>>];\n\n{rank = same; Construct_1; Construct_2}\n{rank = same; indicator_1; indicator_2; indicator_3; \nindicator_4; indicator_5; indicator_6;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+\[ \textbf{$\Sigma$} = \left[ \begin{array}{cccccc}
+\sigma_{1,1}^2 & \sigma_{1,2} & \sigma_{1,3} & \sigma_{1,4} & \sigma_{1,5} & \sigma_{1,6} \\
+\sigma_{2,1} & \sigma_{2,2}^2 & \sigma_{2,3} & \sigma_{2,4} & \sigma_{2,5} & \sigma_{2,6} \\
+\sigma_{3,1} & \sigma_{3,2} & \sigma_{3,3}^2 & \sigma_{3,4} & \sigma_{3,5} & \sigma_{3,6} \\
+\sigma_{4,1} & \sigma_{4,2} & \sigma_{4,3} & \sigma_{4,4}^2 &  \sigma_{4,5} & \sigma_{4,6} \\
+\sigma_{5,1} & \sigma_{5,2} & \sigma_{5,3} & \sigma_{5,4} & \sigma_{5,5}^2 & \sigma_{5,6} \\
+\sigma_{6,1} & \sigma_{6,2} & \sigma_{6,3} & \sigma_{6,4} & \sigma_{6,5} & \sigma_{6,6}^2 
+\end{array} \right],\] 
+
+\[ \textbf{$\Lambda$} = \left[ \begin{array}{cc}
+\lambda_{1,1} & \lambda_{1,2} \\
+\lambda_{2,1} & \lambda_{2,2} \\
+\lambda_{3,1} & \lambda_{3,2}
+\end{array} \right],\] 
+
+\[ \textbf{$\Psi$} = \left[ \begin{array}{cc}
+\psi_{1,1} & \psi_{1,2} \\
+\psi_{2,1} & \psi_{2,2}
+\end{array} \right],\] 
+
+\[ \textbf{$\Lambda^\prime$} = \left[ \begin{array}{cc}
+\lambda_{1,1} & \lambda_{2,1} & \lambda_{3,1} \\
+\lambda_{1,2} & \lambda_{2,2} & \lambda_{3,2}
+\end{array} \right],\] 
+
+\[ \textbf{$\Theta$} = \left[ \begin{array}{cccccc}
+\theta_{1,1} & 0 & 0 & 0 & 0 & 0 \\
+0 & \theta_{2,2} & 0 & 0 & 0 & 0 \\
+0 & 0 & \theta_{3,3} & 0 & 0 & 0 \\
+0 & 0 & 0 & \theta_{4,4} &  0 & 0 \\
+0 & 0 & 0 & 0 & \theta_{5,5} & 0 \\
+0 & 0 & 0 & 0 & 0 & \theta_{6,6} 
+\end{array} \right].\] 
+
+### Latent Cheer with one indicator
+
+```
+# Mplus file
+l.cheer.inp
+```
+<!--html_preserve--><div id="htmlwidget-2198" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-2198">{"x":{"diagram":"\ndigraph Cheer {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nCheer;\n\n# Edges\n\nPositive -> Cheer [label = <&nbsp;&lambda;>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N];\nCheer:s -> Cheer:s [dir=both, label = <&theta;>];\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+

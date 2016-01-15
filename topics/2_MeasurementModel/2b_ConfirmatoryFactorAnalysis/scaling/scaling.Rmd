@@ -6,6 +6,7 @@ output:
   html_document:
     fig_height: 3
     fig_width: 5
+    keep_md: yes
   pdf_document:
     fig_height: 3
     fig_width: 5
@@ -49,7 +50,7 @@ library(DiagrammeR)
 
 
 
-#+CAPTION: SEM nomenclature conventions
+### SEM nomenclature conventions
 
 | name   | upper case   | lower case   | usage                                                            |
 |--------|----------------|------------|------------------------------------------------------------------|
@@ -206,40 +207,6 @@ ztable(pt, zebra = 2, caption = "Descriptive Statistics")
 ```
 
 
-
-### Latent Cheer with one indicator
-
-```{r}
-mod <- '
-Positive =~ Glad + Cheerful + Happy
-'
-fit <- cfa(mod, )
-```
-
-```
-# Mplus file
-l.cheer.inp
-```
-```{r}
-grViz("
-digraph Cheer {
-
-node [shape = circle]
-Positive;
-
-node [shape = box]
-Cheer;
-
-# Edges
-
-Positive -> Cheer [label = <&nbsp;&lambda;>];
-Positive:n -> Positive:n [dir=both, label = <&psi;>,position = N];
-Cheer:s -> Cheer:s [dir=both, label = <&theta;>];
-}  
-")
-```
-
-
 ### Measurement Model: 3 indicators
 
  using correlations only (instead of variance/covariance matirx)
@@ -385,4 +352,29 @@ indicator_4; indicator_5; indicator_6;}
 0 & 0 & 0 & 0 & \theta_{5,5} & 0 \\
 0 & 0 & 0 & 0 & 0 & \theta_{6,6} 
 \end{array} \right].\] 
+
+### Latent Cheer with one indicator
+
+```
+# Mplus file
+l.cheer.inp
+```
+```{r}
+grViz("
+digraph Cheer {
+
+node [shape = circle]
+Positive;
+
+node [shape = box]
+Cheer;
+
+# Edges
+
+Positive -> Cheer [label = <&nbsp;&lambda;>];
+Positive:n -> Positive:n [dir=both, label = <&psi;>,position = N];
+Cheer:s -> Cheer:s [dir=both, label = <&theta;>];
+}  
+")
+```
 
