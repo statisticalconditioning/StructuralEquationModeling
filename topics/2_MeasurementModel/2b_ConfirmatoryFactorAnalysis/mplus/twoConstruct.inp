@@ -7,13 +7,15 @@ DATA:
 
 VARIABLE:
      NAMES ARE glad1 cheer1 happy1 glad2 cheer2 happy2;
-     usevariables are glad1-happy1;
+     usevariables are glad1-happy2;
 ANALYSIS: 
     
 
 MODEL: 
-    PA BY glad1*(L1)
-          cheer1(L2)
-	        happy1(L3);
-
-    MODEL CONSTRAINT: L1 = 3 - L2 - L3;
+    PA1 BY glad1* cheer1 happy1;
+    PA2 BY glad2* cheer2 happy2;
+    PA1@1;
+    PA2@1;
+    PA1 WITH PA2;
+    
+    

@@ -13,3 +13,5 @@ ANALYSIS:
 
 MODEL: 
     Positive BY glad1 cheer1 happy1;
+
+OUTPUT: stdyx;
