@@ -299,10 +299,56 @@ sigma = lambda %*% psi %*% t(lambda) + theta
 round(sigma, 2)
 ```
 
-```{r}
+```{r, echo = TRUE, results = 'asis'}
 
+vec <- dput(scan('topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/PAcorr2t.dat', quiet = TRUE))
+mat <- getCov(vec, lower = TRUE)
+ztable(mat)
 ```
 
+
+## Adding Means to the Model
+
+#### The means structure equation:
+$$
+\mu_y = \textbf{T} + \Lambda \textbf{A}. \tag{2}
+$$
+
+
+```{r}
+dt <- grViz("
+    
+digraph CFA {
+
+node [shape = circle]
+Positive;
+
+node [shape = box]
+Glad; Cheer; Happy;
+
+node [shape = triangle]
+
+1;
+# Edges
+Positive -> Glad [label = <&lambda;<sub>1</sub>>];
+Positive -> Cheer [label = <&lambda;<sub>2</sub>>];
+Positive -> Happy [label = <&lambda;<sub>3</sub>>];
+Positive:n -> Positive:n [dir=both, label = <&psi;>,position = N]
+Glad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]
+Cheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]
+Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
+
+1-> Positive [label = 0];
+1 -> Glad [label = <&tau;<sub>1</sub>>];
+1 -> Cheer [label = <&tau;<sub>2</sub>>];
+1 -> Happy [label = <&tau;<sub>3</sub>>];
+
+{rank = same; Positive; 1;}
+{rank = same; Glad; Cheer; Happy;}
+}  
+")
+dt
+```
 ```{r}
 # grViz("
 #     

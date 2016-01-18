@@ -24,8 +24,8 @@ William Murrah
 |        |              |              | $\sigma$ can also be covariance of indicator                     |
 
 
-<!--html_preserve--><div id="htmlwidget-4649" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-4649">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\n# Edges\nConstruct -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct:n -> Construct:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\n{rank = same; indicator_1; indicator_2; indicator_3;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-326" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-326">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\n# Edges\nConstruct -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct:n -> Construct:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\n{rank = same; indicator_1; indicator_2; indicator_3;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 \[ \textbf{$\Sigma$} = \left[ \begin{array}{cccccc}
 \sigma_{1,1}^2 & \sigma_{1,2} & \sigma_{1,3} \\
 \sigma_{2,1} & \sigma_{2,2}^2 & \sigma_{2,3} \\
@@ -61,8 +61,8 @@ $$
 ## Measurement Model: 3 indicators
 
 
-<!--html_preserve--><div id="htmlwidget-8164" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-8164">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-6475" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-6475">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 
 ```r
@@ -263,8 +263,8 @@ round(sigma,2)
 
 ## Measurement Model: 6 indicators, 2 latent constructs
 
-<!--html_preserve--><div id="htmlwidget-8669" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-8669">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct_1;\nConstruct_2;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\nindicator_4; indicator_5; indicator_6;\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\nConstruct_2 -> indicator_4 [label = <&nbsp;&lambda;<sub>4,2</sub>>];\nConstruct_2 -> indicator_5 [label = <&nbsp;&lambda;<sub>5,2</sub>>];\nConstruct_2 -> indicator_6 [label = <&nbsp;&lambda;<sub>6,2</sub>>];\nConstruct_2:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,2</sub>>];\n\nindicator_4:s -> indicator_4:s [dir=both, label = <&theta;<sub>4,4</sub>>];\nindicator_5:s -> indicator_5:s [dir=both, label = <&theta;<sub>5,5</sub>>];\nindicator_6:s -> indicator_6:s [dir=both, label = <&theta;<sub>6,6</sub>>];\n\nConstruct_1:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,1</sub>>];\n\n{rank = same; Construct_1; Construct_2}\n{rank = same; indicator_1; indicator_2; indicator_3; \nindicator_4; indicator_5; indicator_6;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-4954" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-4954">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct_1;\nConstruct_2;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\nindicator_4; indicator_5; indicator_6;\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\nConstruct_2 -> indicator_4 [label = <&nbsp;&lambda;<sub>4,2</sub>>];\nConstruct_2 -> indicator_5 [label = <&nbsp;&lambda;<sub>5,2</sub>>];\nConstruct_2 -> indicator_6 [label = <&nbsp;&lambda;<sub>6,2</sub>>];\nConstruct_2:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,2</sub>>];\n\nindicator_4:s -> indicator_4:s [dir=both, label = <&theta;<sub>4,4</sub>>];\nindicator_5:s -> indicator_5:s [dir=both, label = <&theta;<sub>5,5</sub>>];\nindicator_6:s -> indicator_6:s [dir=both, label = <&theta;<sub>6,6</sub>>];\n\nConstruct_1:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,1</sub>>];\n\n{rank = same; Construct_1; Construct_2}\n{rank = same; indicator_1; indicator_2; indicator_3; \nindicator_4; indicator_5; indicator_6;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 \[ \textbf{$\Sigma$} = \left[ \begin{array}{cccccc}
 \sigma_{1,1}^2 & \sigma_{1,2} & \sigma_{1,3} & \sigma_{1,4} & \sigma_{1,5} & \sigma_{1,6} \\
@@ -363,7 +363,107 @@ round(sigma, 2)
 ```
 
 
+```r
+vec <- dput(scan('topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/PAcorr2t.dat', quiet = TRUE))
+```
 
+c(1, 0.55226, 1, 0.56256, 0.60307, 1, 0.31889, 0.35898, 0.27757, 
+1, 0.24363, 0.35798, 0.31889, 0.56014, 1, 0.32217, 0.36385, 0.32072, 
+0.56164, 0.59738, 1)
+
+```r
+mat <- getCov(vec, lower = TRUE)
+ztable(mat)
+```
+
+<head><style>
+        table {
+              font-family: serif;
+              text-align: right;}
+        th {
+              padding: 1px 1px 5px 5px;
+	        }
+        td {
+             padding: 1px 1px 5px 5px; }
+      </style></head><table align="center" style="border-collapse: collapse; caption-side:top; font-size:11pt;"><caption style="text-align:center;"></caption><tr>
+<th style="border-left: 0px solid black;background-color: #FFFFFF;border-top: 2px solid gray;border-bottom: 1px solid gray;">&nbsp;</th>
+<th <th align="center" style="font-weight: normal;border-left: 0px solid black;border-bottom: 1px solid gray;border-top: 2px solid gray;">V1</th>
+<th <th align="center" style="font-weight: normal;border-left: 0px solid black;border-bottom: 1px solid gray;border-top: 2px solid gray;">V2</th>
+<th <th align="center" style="font-weight: normal;border-left: 0px solid black;border-bottom: 1px solid gray;border-top: 2px solid gray;">V3</th>
+<th <th align="center" style="font-weight: normal;border-left: 0px solid black;border-bottom: 1px solid gray;border-top: 2px solid gray;">V4</th>
+<th <th align="center" style="font-weight: normal;border-left: 0px solid black;border-bottom: 1px solid gray;border-top: 2px solid gray;">V5</th>
+<th <th align="center" style="font-weight: normal;border-left: 0px solid black;border-right:0px solid black;border-bottom: 1px solid gray;border-top: 2px solid gray;">V6</th>
+</tr>
+<tr>
+<td  style="border-left: 0px solid black; ">V1</td>
+<td align="right" style="border-left: 0px solid black;">1.00</td>
+<td align="right" style="border-left: 0px solid black;">0.55</td>
+<td align="right" style="border-left: 0px solid black;">0.56</td>
+<td align="right" style="border-left: 0px solid black;">0.32</td>
+<td align="right" style="border-left: 0px solid black;">0.24</td>
+<td align="right" style="border-left: 0px solid black;border-right:0px solid black;">0.32</td>
+</tr>
+<tr>
+<td  style="border-left: 0px solid black; border-top: hidden;">V2</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.55</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">1.00</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.60</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.36</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.36</td>
+<td align="right" style="border-left: 0px solid black;border-right:0px solid black;border-top: hidden;">0.36</td>
+</tr>
+<tr>
+<td  style="border-left: 0px solid black; border-top: hidden;">V3</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.56</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.60</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">1.00</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.28</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.32</td>
+<td align="right" style="border-left: 0px solid black;border-right:0px solid black;border-top: hidden;">0.32</td>
+</tr>
+<tr>
+<td  style="border-left: 0px solid black; border-top: hidden;">V4</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.32</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.36</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.28</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">1.00</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.56</td>
+<td align="right" style="border-left: 0px solid black;border-right:0px solid black;border-top: hidden;">0.56</td>
+</tr>
+<tr>
+<td  style="border-left: 0px solid black; border-top: hidden;">V5</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.24</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.36</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.32</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.56</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">1.00</td>
+<td align="right" style="border-left: 0px solid black;border-right:0px solid black;border-top: hidden;">0.60</td>
+</tr>
+<tr>
+<td  style="border-left: 0px solid black; border-top: hidden;">V6</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.32</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.36</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.32</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.56</td>
+<td align="right" style="border-left: 0px solid black;border-top: hidden;">0.60</td>
+<td align="right" style="border-left: 0px solid black;border-right:0px solid black;border-top: hidden;">1.00</td>
+</tr>
+<tr>
+<td colspan="7" align="left" style="font-size:9pt ;border-top: 1px solid black; border-bottom: hidden;"></td>
+</tr>
+</table>
+
+
+## Adding Means to the Model
+
+#### The means structure equation:
+$$
+\mu_y = \textbf{T} + \Lambda \textbf{A}. \tag{2}
+$$
+
+
+<!--html_preserve--><div id="htmlwidget-1487" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-1487">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\nnode [shape = triangle]\n\n1;\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n1-> Positive [label = 0];\n1 -> Glad [label = <&tau;<sub>1</sub>>];\n1 -> Cheer [label = <&tau;<sub>2</sub>>];\n1 -> Happy [label = <&tau;<sub>3</sub>>];\n\n{rank = same; Positive; 1;}\n{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 
 
