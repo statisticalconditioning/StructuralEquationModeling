@@ -1,0 +1,152 @@
+VERSION 1.1.0
+INPUT
+TITLE:
+
+    Effects coding with means and Longitudinal
+    with 2 timepoints
+DATA:
+    FILE IS PAmeansdcorr2t.dat;
+    TYPE IS MEANS STD CORRELATION;
+    NOBSERVATIONS ARE 823;
+VARIABLE:
+    NAMES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+    USEVARIABLES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+OUTPUT:
+    TECH1;
+    RESIDUAL;
+    STANDARDIZED;
+MODEL:
+    Pos1 BY Glad1*(L1)
+           Cheer1(L2)
+           Happy1(L3) ;
+    Pos2 BY Glad2*(L4)
+           Cheer2(L5)
+           Happy2(L6);
+    [Pos1];
+    [Pos2];
+    Glad1 with Glad2;
+    Cheer1 with Cheer2;
+    Happy1 with Happy2;
+    [Glad1](T1)
+    [Cheer1](T2)
+    [Happy1](T3);
+    [Glad2](T4)
+    [Cheer2](T5)
+    [Happy2](T6);
+INPUT_END
+2
+2
+2
+2
+ML
+1
+GENERAL
+0
+6
+2
+0
+glad1 cheer1 happy1 glad2 cheer2 happy2 pos1 pos2
+1
+-1 -1 -1 -1 -1 -1 0 0
+0
+2
+pos1
+glad1 cheer1 happy1
+pos2
+glad2 cheer2 happy2
+1 1 pos1 glad1    0.925    0.031
+91 1 pos1 glad1 l1
+1 1 pos1 cheer1    1.075    0.032
+91 1 pos1 cheer1 l2
+1 1 pos1 happy1    0.999    0.031
+91 1 pos1 happy1 l3
+1 1 pos2 glad2    0.934    0.031
+91 1 pos2 glad2 l4
+1 1 pos2 cheer2    1.061    0.032
+91 1 pos2 cheer2 l5
+1 1 pos2 happy2    1.004    0.031
+91 1 pos2 happy2 l6
+2 1 glad1 glad2    0.031    0.015
+2 1 cheer1 cheer2    0.018    0.016
+2 1 happy1 happy2   -0.011    0.014
+2 1 pos2 pos1    0.234    0.020
+4 1 glad1    0.349    0.023
+4 1 cheer1    0.306    0.025
+4 1 happy1    0.278    0.022
+4 1 glad2    0.335    0.023
+4 1 cheer2    0.343    0.026
+4 1 happy2    0.274    0.023
+5 1 pos1    0.420    0.026
+5 1 pos2    0.426    0.026
+11 1 pos1 glad1    0.712    0.023
+91 1 pos1 glad1 l1
+11 1 pos1 cheer1    0.783    0.021
+91 1 pos1 cheer1 l2
+11 1 pos1 happy1    0.776    0.021
+91 1 pos1 happy1 l3
+11 1 pos2 glad2    0.725    0.022
+91 1 pos2 glad2 l4
+11 1 pos2 cheer2    0.764    0.022
+91 1 pos2 cheer2 l5
+11 1 pos2 happy2    0.782    0.021
+91 1 pos2 happy2 l6
+12 1 glad1 glad2    0.092    0.044
+12 1 cheer1 cheer2    0.055    0.050
+12 1 happy1 happy2   -0.039    0.052
+12 1 pos2 pos1    0.553    0.034
+14 1 glad1    0.492    0.032
+14 1 cheer1    0.387    0.033
+14 1 happy1    0.398    0.033
+14 1 glad2    0.474    0.033
+14 1 cheer2    0.416    0.033
+14 1 happy2    0.389    0.033
+15 1 pos1    1.000    0.000
+15 1 pos2    1.000    0.000
+21 1 pos1 glad1    0.712    0.023
+91 1 pos1 glad1 l1
+21 1 pos1 cheer1    0.783    0.021
+91 1 pos1 cheer1 l2
+21 1 pos1 happy1    0.776    0.021
+91 1 pos1 happy1 l3
+21 1 pos2 glad2    0.725    0.022
+91 1 pos2 glad2 l4
+21 1 pos2 cheer2    0.764    0.022
+91 1 pos2 cheer2 l5
+21 1 pos2 happy2    0.782    0.021
+91 1 pos2 happy2 l6
+22 1 glad1 glad2    0.092    0.044
+22 1 cheer1 cheer2    0.055    0.050
+22 1 happy1 happy2   -0.039    0.052
+22 1 pos2 pos1    0.553    0.034
+24 1 glad1    0.492    0.032
+24 1 cheer1    0.387    0.033
+24 1 happy1    0.398    0.033
+24 1 glad2    0.474    0.033
+24 1 cheer2    0.416    0.033
+24 1 happy2    0.389    0.033
+25 1 pos1    1.000    0.000
+25 1 pos2    1.000    0.000
+31 1 pos1 glad1    0.599    0.028
+91 1 pos1 glad1 l1
+31 1 pos1 cheer1    0.697    0.030
+91 1 pos1 cheer1 l2
+31 1 pos1 happy1    0.647    0.028
+91 1 pos1 happy1 l3
+31 1 pos2 glad2    0.610    0.028
+91 1 pos2 glad2 l4
+31 1 pos2 cheer2    0.693    0.030
+91 1 pos2 cheer2 l5
+31 1 pos2 happy2    0.656    0.028
+91 1 pos2 happy2 l6
+32 1 glad1 glad2    0.031    0.015
+32 1 cheer1 cheer2    0.018    0.016
+32 1 happy1 happy2   -0.011    0.014
+32 1 pos2 pos1    0.553    0.034
+34 1 glad1    0.349    0.023
+34 1 cheer1    0.306    0.025
+34 1 happy1    0.278    0.022
+34 1 glad2    0.335    0.023
+34 1 cheer2    0.343    0.026
+34 1 happy2    0.274    0.023
+35 1 pos1    1.000    0.000
+35 1 pos2    1.000    0.000

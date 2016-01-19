@@ -346,7 +346,7 @@ Glad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]
 Cheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]
 Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
 
-1-> Positive [label = 0];
+1-> Positive [label = <&alpha;> ];
 1 -> Glad [label = <&tau;<sub>1</sub>>];
 1 -> Cheer [label = <&tau;<sub>2</sub>>];
 1 -> Happy [label = <&tau;<sub>3</sub>>];
@@ -357,6 +357,113 @@ Happy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]
 ")
 dt
 ```
+
+
+### Mplus: `factorMeans.inp`
+```{r}
+file <-'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/factorMeans.inp'
+noquote(scan(file, what = 'character', sep = '\n'))
+```
+
+
+### Mplus: `factorMeans.out`
+```{r}
+file <-'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/factorMeans.out'
+noquote(scan(file, what = 'character', sep = '\n', skip = 114, nlines = 24))
+```
+
+
+
+## Longitudinal Measurement Model
+
+```{r}
+means <- c(3.06893, 2.9259, 3.11013, 3.02577, 2.85656, 3.09346)
+sds <- c(0.84194, 0.88934, 0.8347, 0.84081, 0.90864, 0.83984)
+cors <- c(1, 0.55226, 1, 0.56256, 0.60307, 1, 0.31889, 0.35898, 0.27757, 
+1, 0.24363, 0.35798, 0.31889, 0.56014, 1, 0.32217, 0.36385, 0.32072, 
+0.56164, 0.59738, 1)
+cormat <- getCov(cors)
+covmat <- cor2cov(cormat, sds = sds)
+
+```
+
+```{r, results='asis'}
+names <- c("Glad1", "Cheer1", "Happy1",
+           "Glad2", "Cheer2", "Happy2")
+rownames(covmat) <- colnames(covmat) <- names
+cr <- ztable(covmat, zebra = 2)
+tab <- data.frame(Mean = round(means, 3), SD = round(sds, 3), 
+                  Var = round(sds*sds, 3))
+
+pt <- t(cbind(covmat, tab))
+ztable(pt, zebra = 2, caption = "Descriptive Statistics")
+
+```
+
+
+### Mplus: `effectCodingMeansLongitudinal.inp`
+```{r}
+file <-'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/effectCodingMeansLongitudinal.inp'
+noquote(scan(file, what = 'character', sep = '\n'))
+```
+
+### Mplus: `effectcodingmeanslongitudinal.out`
+```{r}
+file <-'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/effectCodingMeansLongitudinal.out'
+noquote(scan(file, what = 'character', sep = '\n', skip=143, nlines=50))
+```
+
+
+```{r, echo = TRUE}
+lambda <- matrix(c(.925, 1.075, .999, 0, 0, 0,
+                   0, 0, 0, .934, 1.061, 1.004), nrow = 6)
+lambda
+```
+
+```{r, echo = TRUE}
+psi <- matrix(c(.420, .234,
+                .234, .426), nrow=2)
+psi
+```
+
+```{r, echo = TRUE}
+t(lambda)
+```
+
+```{r, echo = TRUE}
+theta <- diag(c(.349, .306, .278, .335, .343, .274))
+theta[1 ,4] <- theta[4, 1] <- .031 
+theta[2, 5] <- theta[5, 2] <- .018
+theta[3, 6] <- theta[6, 3] <- -.011
+theta
+```
+
+
+```{r, echo = TRUE}
+tau <- matrix(c(.260, -.338, .078, .231, -.319, .088),nrow = 6)
+tau
+```
+
+```{r, echo = TRUE}
+alpha <- matrix(c(3.035, 2.992), nrow=2)
+alpha
+```
+
+```{r, echo = TRUE}
+sigma <- lambda %*% psi %*% t(lambda) + theta
+sigma
+```
+
+```{r, echo = TRUE}
+mu <- tau + lambda %*% alpha
+mu
+```
+
+```{r, results='asis'}
+ztable(pt, zebra = 2, caption = "Descriptive Statistics")
+```
+
+
 ```{r}
 # grViz("
 #     

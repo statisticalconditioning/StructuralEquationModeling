@@ -1,0 +1,30 @@
+TITLE:
+    Fixed factor with means
+DATA:
+    FILE IS posaff.items.823.dat;
+    TYPE IS MEANS STD CORRELATION; 
+    NOBSERVATIONS ARE 823; 
+
+VARIABLE:
+    NAMES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+    !Note: glad1 cheer1 and happy1 are from Time 1
+    !glad2 cheer2 and happy2 are from time 2
+    
+    USEVARIABLES ARE Glad1 Cheer1 Happy1;
+
+MODEL:
+    Pos BY Glad1* Cheer1 Happy1;
+    !The * after glad1 released the default
+    !and allows glad1 to be freely estimated
+    
+    Pos@1; 
+    !fix the latent variance to 1.0
+
+   [Glad1 Cheer1 Happy1];
+   !estimates the intercepts
+   !will estimate by default
+    
+
+OUTPUT:
+    TECH1 
+    STANDARDIZED; 

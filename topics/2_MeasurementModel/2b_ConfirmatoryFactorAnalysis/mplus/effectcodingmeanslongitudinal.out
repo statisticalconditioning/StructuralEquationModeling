@@ -1,0 +1,648 @@
+Mplus VERSION 7.2
+MUTHEN & MUTHEN
+01/19/2016   3:00 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE:
+      Effects coding with means and Longitudinal
+      with 2 timepoints
+  DATA:
+      FILE IS PAmeansdcorr2t.dat;
+      TYPE IS MEANS STD CORRELATION;
+      NOBSERVATIONS ARE 823;
+
+  VARIABLE:
+      NAMES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+      !Note: glad1 cheer1 and happy1 are from Time 1
+      !glad2 cheer2 and happy2 are from time 2
+
+      USEVARIABLES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+
+  MODEL:
+      Pos1 BY Glad1*(L1)
+             Cheer1(L2)
+             Happy1(L3) ; !Label for constraints
+
+      Pos2 BY Glad2*(L4)
+             Cheer2(L5)
+             Happy2(L6);
+
+      [Pos1]; !estimate latent means
+      [Pos2];
+
+      Glad1 with Glad2; !allow correlated residuals across time
+      Cheer1 with Cheer2;
+      Happy1 with Happy2;
+
+      [Glad1](T1)
+      [Cheer1](T2)
+      [Happy1](T3); !estimate and constrain the intercepts
+      [Glad2](T4)
+      [Cheer2](T5)
+      [Happy2](T6);
+      MODEL CONSTRAINT: L1= 3 - L2 - L3;
+                        L4 = 3 - L5 - L6;
+                        T1= 0 - T2 - T3;
+                        T4 = 0 - T5 - T6;
+
+  OUTPUT:
+      TECH1;
+      RESIDUAL;
+      STANDARDIZED;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+
+Effects coding with means and Longitudinal
+with 2 timepoints
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         823
+
+Number of dependent variables                                    6
+Number of independent variables                                  0
+Number of continuous latent variables                            2
+
+Observed dependent variables
+
+  Continuous
+   GLAD1       CHEER1      HAPPY1      GLAD2       CHEER2      HAPPY2
+
+Continuous latent variables
+   POS1        POS2
+
+
+Estimator                                                       ML
+Information matrix                                        EXPECTED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+Input data file(s)
+  PAmeansdcorr2t.dat
+
+Input data format  FREE
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       22
+
+Loglikelihood
+
+          H0 Value                       -5380.087
+          H1 Value                       -5370.871
+
+Information Criteria
+
+          Akaike (AIC)                   10804.175
+          Bayesian (BIC)                 10907.860
+          Sample-Size Adjusted BIC       10837.996
+            (n* = (n + 2) / 24)
+
+Chi-Square Test of Model Fit
+
+          Value                             18.432
+          Degrees of Freedom                     5
+          P-Value                           0.0025
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+          Estimate                           0.057
+          90 Percent C.I.                    0.031  0.086
+          Probability RMSEA <= .05           0.293
+
+CFI/TLI
+
+          CFI                                0.992
+          TLI                                0.977
+
+Chi-Square Test of Model Fit for the Baseline Model
+
+          Value                           1761.666
+          Degrees of Freedom                    15
+          P-Value                           0.0000
+
+SRMR (Standardized Root Mean Square Residual)
+
+          Value                              0.017
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ POS1     BY
+    GLAD1              0.925      0.031     29.969      0.000
+    CHEER1             1.075      0.032     33.613      0.000
+    HAPPY1             0.999      0.031     32.008      0.000
+
+ POS2     BY
+    GLAD2              0.934      0.031     30.394      0.000
+    CHEER2             1.061      0.032     33.062      0.000
+    HAPPY2             1.004      0.031     32.116      0.000
+
+ POS2     WITH
+    POS1               0.234      0.020     11.509      0.000
+
+ GLAD1    WITH
+    GLAD2              0.031      0.015      2.055      0.040
+
+ CHEER1   WITH
+    CHEER2             0.018      0.016      1.076      0.282
+
+ HAPPY1   WITH
+    HAPPY2            -0.011      0.014     -0.767      0.443
+
+ Means
+    POS1               3.035      0.025    120.379      0.000
+    POS2               2.992      0.025    117.661      0.000
+
+ Intercepts
+    GLAD1              0.260      0.095      2.737      0.006
+    CHEER1            -0.338      0.098     -3.435      0.001
+    HAPPY1             0.078      0.096      0.808      0.419
+    GLAD2              0.231      0.093      2.469      0.014
+    CHEER2            -0.319      0.097     -3.275      0.001
+    HAPPY2             0.088      0.095      0.933      0.351
+
+ Variances
+    POS1               0.420      0.026     16.126      0.000
+    POS2               0.426      0.026     16.106      0.000
+
+ Residual Variances
+    GLAD1              0.349      0.023     15.214      0.000
+    CHEER1             0.306      0.025     12.199      0.000
+    HAPPY1             0.278      0.022     12.455      0.000
+    GLAD2              0.335      0.023     14.746      0.000
+    CHEER2             0.343      0.026     13.084      0.000
+    HAPPY2             0.274      0.023     12.153      0.000
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ POS1     BY
+    GLAD1              0.712      0.023     31.279      0.000
+    CHEER1             0.783      0.021     37.259      0.000
+    HAPPY1             0.776      0.021     36.224      0.000
+
+ POS2     BY
+    GLAD2              0.725      0.022     32.327      0.000
+    CHEER2             0.764      0.022     35.503      0.000
+    HAPPY2             0.782      0.021     36.723      0.000
+
+ POS2     WITH
+    POS1               0.553      0.034     16.471      0.000
+
+ GLAD1    WITH
+    GLAD2              0.092      0.044      2.096      0.036
+
+ CHEER1   WITH
+    CHEER2             0.055      0.050      1.092      0.275
+
+ HAPPY1   WITH
+    HAPPY2            -0.039      0.052     -0.760      0.447
+
+ Means
+    POS1               4.685      0.150     31.154      0.000
+    POS2               4.582      0.147     31.068      0.000
+
+ Intercepts
+    GLAD1              0.309      0.117      2.644      0.008
+    CHEER1            -0.380      0.107     -3.545      0.000
+    HAPPY1             0.093      0.116      0.801      0.423
+    GLAD2              0.274      0.114      2.396      0.017
+    CHEER2            -0.352      0.104     -3.383      0.001
+    HAPPY2             0.105      0.114      0.924      0.355
+
+ Variances
+    POS1               1.000      0.000    999.000    999.000
+    POS2               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    GLAD1              0.492      0.032     15.172      0.000
+    CHEER1             0.387      0.033     11.737      0.000
+    HAPPY1             0.398      0.033     11.998      0.000
+    GLAD2              0.474      0.033     14.571      0.000
+    CHEER2             0.416      0.033     12.661      0.000
+    HAPPY2             0.389      0.033     11.690      0.000
+
+
+STDY Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ POS1     BY
+    GLAD1              0.712      0.023     31.279      0.000
+    CHEER1             0.783      0.021     37.259      0.000
+    HAPPY1             0.776      0.021     36.224      0.000
+
+ POS2     BY
+    GLAD2              0.725      0.022     32.327      0.000
+    CHEER2             0.764      0.022     35.503      0.000
+    HAPPY2             0.782      0.021     36.723      0.000
+
+ POS2     WITH
+    POS1               0.553      0.034     16.471      0.000
+
+ GLAD1    WITH
+    GLAD2              0.092      0.044      2.096      0.036
+
+ CHEER1   WITH
+    CHEER2             0.055      0.050      1.092      0.275
+
+ HAPPY1   WITH
+    HAPPY2            -0.039      0.052     -0.760      0.447
+
+ Means
+    POS1               4.685      0.150     31.154      0.000
+    POS2               4.582      0.147     31.068      0.000
+
+ Intercepts
+    GLAD1              0.309      0.117      2.644      0.008
+    CHEER1            -0.380      0.107     -3.545      0.000
+    HAPPY1             0.093      0.116      0.801      0.423
+    GLAD2              0.274      0.114      2.396      0.017
+    CHEER2            -0.352      0.104     -3.383      0.001
+    HAPPY2             0.105      0.114      0.924      0.355
+
+ Variances
+    POS1               1.000      0.000    999.000    999.000
+    POS2               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    GLAD1              0.492      0.032     15.172      0.000
+    CHEER1             0.387      0.033     11.737      0.000
+    HAPPY1             0.398      0.033     11.998      0.000
+    GLAD2              0.474      0.033     14.571      0.000
+    CHEER2             0.416      0.033     12.661      0.000
+    HAPPY2             0.389      0.033     11.690      0.000
+
+
+STD Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ POS1     BY
+    GLAD1              0.599      0.028     21.208      0.000
+    CHEER1             0.697      0.030     23.602      0.000
+    HAPPY1             0.647      0.028     23.220      0.000
+
+ POS2     BY
+    GLAD2              0.610      0.028     21.638      0.000
+    CHEER2             0.693      0.030     22.914      0.000
+    HAPPY2             0.656      0.028     23.423      0.000
+
+ POS2     WITH
+    POS1               0.553      0.034     16.471      0.000
+
+ GLAD1    WITH
+    GLAD2              0.031      0.015      2.055      0.040
+
+ CHEER1   WITH
+    CHEER2             0.018      0.016      1.076      0.282
+
+ HAPPY1   WITH
+    HAPPY2            -0.011      0.014     -0.767      0.443
+
+ Means
+    POS1               4.685      0.150     31.154      0.000
+    POS2               4.582      0.147     31.068      0.000
+
+ Intercepts
+    GLAD1              0.260      0.095      2.737      0.006
+    CHEER1            -0.338      0.098     -3.435      0.001
+    HAPPY1             0.078      0.096      0.808      0.419
+    GLAD2              0.231      0.093      2.469      0.014
+    CHEER2            -0.319      0.097     -3.275      0.001
+    HAPPY2             0.088      0.095      0.933      0.351
+
+ Variances
+    POS1               1.000      0.000    999.000    999.000
+    POS2               1.000      0.000    999.000    999.000
+
+ Residual Variances
+    GLAD1              0.349      0.023     15.214      0.000
+    CHEER1             0.306      0.025     12.199      0.000
+    HAPPY1             0.278      0.022     12.455      0.000
+    GLAD2              0.335      0.023     14.746      0.000
+    CHEER2             0.343      0.026     13.084      0.000
+    HAPPY2             0.274      0.023     12.153      0.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    GLAD1              0.508      0.032     15.639      0.000
+    CHEER1             0.613      0.033     18.629      0.000
+    HAPPY1             0.602      0.033     18.112      0.000
+    GLAD2              0.526      0.033     16.164      0.000
+    CHEER2             0.584      0.033     17.751      0.000
+    HAPPY2             0.611      0.033     18.362      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.720E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+RESIDUAL OUTPUT
+
+
+     ESTIMATED MODEL AND RESIDUALS (OBSERVED - ESTIMATED)
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+      1         3.069         2.926         3.110         3.026         2.857
+
+
+           Model Estimated Means/Intercepts/Thresholds
+              HAPPY2
+              ________
+      1         3.093
+
+
+           Residuals for Means/Intercepts/Thresholds
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Residuals for Means/Intercepts/Thresholds
+              HAPPY2
+              ________
+      1         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Standardized Residuals (z-scores) for Means/Intercepts/Thresholds
+              HAPPY2
+              ________
+      1         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+      1         0.000         0.000         0.000         0.000         0.000
+
+
+           Normalized Residuals for Means/Intercepts/Thresholds
+              HAPPY2
+              ________
+      1         0.000
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+ GLAD1          0.708
+ CHEER1         0.418         0.791
+ HAPPY1         0.388         0.451         0.696
+ GLAD2          0.233         0.235         0.218         0.708
+ CHEER2         0.230         0.285         0.248         0.423         0.823
+ HAPPY2         0.217         0.253         0.224         0.400         0.455
+
+
+           Model Estimated Covariances/Correlations/Residual Correlations
+              HAPPY2
+              ________
+ HAPPY2         0.704
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+ GLAD1          0.000
+ CHEER1        -0.005        -0.001
+ HAPPY1         0.007        -0.004        -0.001
+ GLAD2         -0.008         0.033        -0.024        -0.002
+ CHEER2        -0.043         0.004        -0.006         0.005         0.002
+ HAPPY2         0.010         0.019         0.001        -0.004         0.001
+
+
+           Residuals for Covariances/Correlations/Residual Correlations
+              HAPPY2
+              ________
+ HAPPY2         0.001
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+ GLAD1          0.076
+ CHEER1        -1.472       999.000
+ HAPPY1         1.465        -2.224       999.000
+ GLAD2         -0.938         2.159        -1.733       999.000
+ CHEER2        -2.846         0.519        -0.455         0.989         0.621
+ HAPPY2         0.699         1.385         0.114        -1.360         0.215
+
+
+           Standardized Residuals (z-scores) for Covariances/Correlations/Residual Corr
+              HAPPY2
+              ________
+ HAPPY2         0.370
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+ GLAD1          0.003
+ CHEER1        -0.153        -0.026
+ HAPPY1         0.245        -0.124        -0.017
+ GLAD2         -0.307         1.201        -0.934        -0.044
+ CHEER2        -1.586         0.148        -0.231         0.152         0.041
+ HAPPY2         0.396         0.683         0.032        -0.141         0.025
+
+
+           Normalized Residuals for Covariances/Correlations/Residual Correlations
+              HAPPY2
+              ________
+ HAPPY2         0.015
+
+
+TECHNICAL 1 OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+      1           1             2             3             4             5
+
+
+           NU
+              HAPPY2
+              ________
+      1           6
+
+
+           LAMBDA
+              POS1          POS2
+              ________      ________
+ GLAD1              7             0
+ CHEER1             8             0
+ HAPPY1             9             0
+ GLAD2              0            10
+ CHEER2             0            11
+ HAPPY2             0            12
+
+
+           THETA
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+ GLAD1             13
+ CHEER1             0            14
+ HAPPY1             0             0            15
+ GLAD2             16             0             0            17
+ CHEER2             0            18             0             0            19
+ HAPPY2             0             0            20             0             0
+
+
+           THETA
+              HAPPY2
+              ________
+ HAPPY2            21
+
+
+           ALPHA
+              POS1          POS2
+              ________      ________
+      1          22            23
+
+
+           BETA
+              POS1          POS2
+              ________      ________
+ POS1               0             0
+ POS2               0             0
+
+
+           PSI
+              POS1          POS2
+              ________      ________
+ POS1              24
+ POS2              25            26
+
+
+     STARTING VALUES
+
+
+           NU
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+      1         3.069         2.926         3.110         3.026         2.857
+
+
+           NU
+              HAPPY2
+              ________
+      1         3.093
+
+
+           LAMBDA
+              POS1          POS2
+              ________      ________
+ GLAD1          1.000         0.000
+ CHEER1         1.000         0.000
+ HAPPY1         1.000         0.000
+ GLAD2          0.000         1.000
+ CHEER2         0.000         1.000
+ HAPPY2         0.000         1.000
+
+
+           THETA
+              GLAD1         CHEER1        HAPPY1        GLAD2         CHEER2
+              ________      ________      ________      ________      ________
+ GLAD1          0.354
+ CHEER1         0.000         0.395
+ HAPPY1         0.000         0.000         0.348
+ GLAD2          0.000         0.000         0.000         0.353
+ CHEER2         0.000         0.000         0.000         0.000         0.413
+ HAPPY2         0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              HAPPY2
+              ________
+ HAPPY2         0.353
+
+
+           ALPHA
+              POS1          POS2
+              ________      ________
+      1         0.000         0.000
+
+
+           BETA
+              POS1          POS2
+              ________      ________
+ POS1           0.000         0.000
+ POS2           0.000         0.000
+
+
+           PSI
+              POS1          POS2
+              ________      ________
+ POS1           0.050
+ POS2           0.000         0.050
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    c:\users\wmm4w\projects\teaching\statisticalprogramming\structuralequationmodeling\topics\2_meas
+
+     Beginning Time:  15:00:35
+        Ending Time:  15:00:35
+       Elapsed Time:  00:00:00
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2014 Muthen & Muthen

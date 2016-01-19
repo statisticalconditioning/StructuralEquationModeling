@@ -1,0 +1,33 @@
+TITLE:
+    Effects coding with means
+DATA:
+    FILE IS posaff.items.823.dat;
+    TYPE IS MEANS STD CORRELATION; 
+    NOBSERVATIONS ARE 823; 
+
+VARIABLE:
+    NAMES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+    !Note: glad1 cheer1 and happy1 are from Time 1
+    !glad2 cheer2 and happy2 are from time 2
+    
+    USEVARIABLES ARE Glad1 Cheer1 Happy1;
+
+MODEL:
+    Pos BY Glad1*(L1)
+           Cheer1(L2)
+           Happy1(L3) ; !Label for constraints
+
+    [Pos]; !estimate latent mean
+
+
+    [Glad1](T1)
+    [Cheer1](T2)
+    [Happy1](T3); !estimate and constrain the intercepts 
+
+    MODEL CONSTRAINT: L1= 3 - L2 - L3;
+                      T1= 0 - T2 - T3;
+    
+
+OUTPUT:
+    TECH1 
+    STANDARDIZED; 

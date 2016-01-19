@@ -1,0 +1,46 @@
+TITLE:
+    Effects coding with means and Longitudinal
+    with 2 timepoints
+DATA:
+    FILE IS PAmeansdcorr2t.dat;
+    TYPE IS MEANS STD CORRELATION; 
+    NOBSERVATIONS ARE 823; 
+
+VARIABLE:
+    NAMES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+    !Note: glad1 cheer1 and happy1 are from Time 1
+    !glad2 cheer2 and happy2 are from time 2
+    
+    USEVARIABLES ARE Glad1 Cheer1 Happy1 Glad2 Cheer2 Happy2;
+
+MODEL:
+    Pos1 BY Glad1*(L1)
+           Cheer1(L2)
+           Happy1(L3) ; !Label for constraints
+
+    Pos2 BY Glad2*(L4)
+           Cheer2(L5)
+           Happy2(L6);
+
+    [Pos1]; !estimate latent means
+    [Pos2];
+
+    Glad1 with Glad2; !allow correlated residuals across time
+    Cheer1 with Cheer2;
+    Happy1 with Happy2;
+
+    [Glad1](T1)
+    [Cheer1](T2)
+    [Happy1](T3); !estimate and constrain the intercepts 
+    [Glad2](T4)
+    [Cheer2](T5)
+    [Happy2](T6);
+    MODEL CONSTRAINT: L1= 3 - L2 - L3;
+                      L4 = 3 - L5 - L6;
+                      T1= 0 - T2 - T3;
+                      T4 = 0 - T5 - T6;
+
+OUTPUT:
+    TECH1;
+    RESIDUAL;
+    STANDARDIZED; 

@@ -1,0 +1,26 @@
+TITLE: Positive Affect with Marker Variable Scaling
+
+DATA: 
+    FILE IS PAmeansdcorr2t.dat;
+    TYPE IS MEANS STDEVIATIONS CORRELATION;
+    NOBSERVATIONS ARE 823;
+    
+VARIABLE:
+     NAMES ARE glad1 cheer1 happy1 glad2 cheer2 happy2;
+     usevariables are glad1-happy1;
+ANALYSIS: 
+    
+
+MODEL: 
+    PA BY glad1*(L1)
+          cheer1(L2)
+	  happy1(L3);
+    [PA];
+    [glad1](T1);
+    [cheer1](T2);
+    [happy1](T3);
+
+    MODEL CONSTRAINT:
+    L1 = 3 - L2 - L3;
+    T1 = 0 - T2 - T3;
+    
