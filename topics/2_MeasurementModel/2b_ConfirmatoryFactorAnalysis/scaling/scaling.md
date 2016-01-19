@@ -24,8 +24,8 @@ William Murrah
 |        |              |              | $\sigma$ can also be covariance of indicator                     |
 
 
-<!--html_preserve--><div id="htmlwidget-326" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-326">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\n# Edges\nConstruct -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct:n -> Construct:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\n{rank = same; indicator_1; indicator_2; indicator_3;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-3144" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-3144">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\n# Edges\nConstruct -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct:n -> Construct:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\n{rank = same; indicator_1; indicator_2; indicator_3;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 \[ \textbf{$\Sigma$} = \left[ \begin{array}{cccccc}
 \sigma_{1,1}^2 & \sigma_{1,2} & \sigma_{1,3} \\
 \sigma_{2,1} & \sigma_{2,2}^2 & \sigma_{2,3} \\
@@ -61,8 +61,8 @@ $$
 ## Measurement Model: 3 indicators
 
 
-<!--html_preserve--><div id="htmlwidget-6475" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-6475">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-233" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-233">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n\t{rank = same; Positive;}\n\t{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 
 ```r
@@ -146,6 +146,26 @@ mynob<-823
 <td colspan="4" align="left" style="font-size:9pt ;border-top: 1px solid black; border-bottom: hidden;"></td>
 </tr>
 </table>
+
+### Mplus input file (`marker1.inp`)
+
+
+```
+ [1] TITLE: Positive Affect with Marker Variable Scaling    
+ [2] DATA:                                                  
+ [3]     FILE IS PAcorr2t.dat;                              
+ [4]     TYPE IS CORRELATION;                               
+ [5]     NOBSERVATIONS ARE 823;                             
+ [6] VARIABLE:                                              
+ [7]      NAMES ARE glad1 cheer1 happy1 glad2 cheer2 happy2;
+ [8]      usevariables are glad1-happy1;                    
+ [9] ANALYSIS:                                              
+[10]                                                        
+[11] MODEL:                                                 
+[12]     Positive BY glad1 cheer1 happy1;                   
+[13] OUTPUT: stdyx;                                         
+```
+
 
 ### Mplus output using Correlation Table and first indicator fixed to 1.00
 
@@ -263,8 +283,8 @@ round(sigma,2)
 
 ## Measurement Model: 6 indicators, 2 latent constructs
 
-<!--html_preserve--><div id="htmlwidget-4954" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-4954">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct_1;\nConstruct_2;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\nindicator_4; indicator_5; indicator_6;\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\nConstruct_2 -> indicator_4 [label = <&nbsp;&lambda;<sub>4,2</sub>>];\nConstruct_2 -> indicator_5 [label = <&nbsp;&lambda;<sub>5,2</sub>>];\nConstruct_2 -> indicator_6 [label = <&nbsp;&lambda;<sub>6,2</sub>>];\nConstruct_2:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,2</sub>>];\n\nindicator_4:s -> indicator_4:s [dir=both, label = <&theta;<sub>4,4</sub>>];\nindicator_5:s -> indicator_5:s [dir=both, label = <&theta;<sub>5,5</sub>>];\nindicator_6:s -> indicator_6:s [dir=both, label = <&theta;<sub>6,6</sub>>];\n\nConstruct_1:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,1</sub>>];\n\n{rank = same; Construct_1; Construct_2}\n{rank = same; indicator_1; indicator_2; indicator_3; \nindicator_4; indicator_5; indicator_6;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-9174" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-9174">{"x":{"diagram":"\ndigraph Basic {\nnode [shape = circle]\nConstruct_1;\nConstruct_2;\nnode [shape = box]\nindicator_1; indicator_2; indicator_3;\nindicator_4; indicator_5; indicator_6;\n# Edges\nConstruct_1 -> indicator_1 [label = <&nbsp;&lambda;<sub>1,1</sub>>];\nConstruct_1 -> indicator_2 [label = <&nbsp;&lambda;<sub>2,1</sub>>];\nConstruct_1 -> indicator_3 [label = <&nbsp;&lambda;<sub>3,1</sub>>];\nConstruct_1:n -> Construct_1:n [dir=both, label = <&psi;<sub>1,1</sub>>];\n\nindicator_1:s -> indicator_1:s [dir=both, label = <&theta;<sub>1,1</sub>>];\nindicator_2:s -> indicator_2:s [dir=both, label = <&theta;<sub>2,2</sub>>];\nindicator_3:s -> indicator_3:s [dir=both, label = <&theta;<sub>3,3</sub>>];\n\nConstruct_2 -> indicator_4 [label = <&nbsp;&lambda;<sub>4,2</sub>>];\nConstruct_2 -> indicator_5 [label = <&nbsp;&lambda;<sub>5,2</sub>>];\nConstruct_2 -> indicator_6 [label = <&nbsp;&lambda;<sub>6,2</sub>>];\nConstruct_2:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,2</sub>>];\n\nindicator_4:s -> indicator_4:s [dir=both, label = <&theta;<sub>4,4</sub>>];\nindicator_5:s -> indicator_5:s [dir=both, label = <&theta;<sub>5,5</sub>>];\nindicator_6:s -> indicator_6:s [dir=both, label = <&theta;<sub>6,6</sub>>];\n\nConstruct_1:n -> Construct_2:n [dir=both, label = <&psi;<sub>2,1</sub>>];\n\n{rank = same; Construct_1; Construct_2}\n{rank = same; indicator_1; indicator_2; indicator_3; \nindicator_4; indicator_5; indicator_6;}\n} \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 \[ \textbf{$\Sigma$} = \left[ \begin{array}{cccccc}
 \sigma_{1,1}^2 & \sigma_{1,2} & \sigma_{1,3} & \sigma_{1,4} & \sigma_{1,5} & \sigma_{1,6} \\
@@ -462,8 +482,8 @@ $$
 $$
 
 
-<!--html_preserve--><div id="htmlwidget-1487" style="width:480px;height:288px;" class="grViz"></div>
-<script type="application/json" data-for="htmlwidget-1487">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\nnode [shape = triangle]\n\n1;\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n1-> Positive [label = 0];\n1 -> Glad [label = <&tau;<sub>1</sub>>];\n1 -> Cheer [label = <&tau;<sub>2</sub>>];\n1 -> Happy [label = <&tau;<sub>3</sub>>];\n\n{rank = same; Positive; 1;}\n{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-4712" style="width:480px;height:288px;" class="grViz"></div>
+<script type="application/json" data-for="htmlwidget-4712">{"x":{"diagram":"\n    \ndigraph CFA {\n\nnode [shape = circle]\nPositive;\n\nnode [shape = box]\nGlad; Cheer; Happy;\n\nnode [shape = triangle]\n\n1;\n# Edges\nPositive -> Glad [label = <&lambda;<sub>1</sub>>];\nPositive -> Cheer [label = <&lambda;<sub>2</sub>>];\nPositive -> Happy [label = <&lambda;<sub>3</sub>>];\nPositive:n -> Positive:n [dir=both, label = <&psi;>,position = N]\nGlad:s -> Glad:s [dir=both, label = <&theta;<sub>1</sub>>]\nCheer:s -> Cheer:s [dir=both, label = <&theta;<sub>2</sub>>]\nHappy:s -> Happy:s [dir=both, label = <&theta;<sub>3</sub>>]\n\n1-> Positive [label = 0];\n1 -> Glad [label = <&tau;<sub>1</sub>>];\n1 -> Cheer [label = <&tau;<sub>2</sub>>];\n1 -> Happy [label = <&tau;<sub>3</sub>>];\n\n{rank = same; Positive; 1;}\n{rank = same; Glad; Cheer; Happy;}\n}  \n","config":{"engine":"dot","options":null}},"evals":[]}</script><!--/html_preserve-->
 
 
 

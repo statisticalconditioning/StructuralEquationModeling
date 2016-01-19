@@ -1,0 +1,18 @@
+TITLE: Positive Affect with Marker Variable Scaling and Mean Structure
+
+DATA: 
+    FILE IS PAmeansdcorr2t.dat;
+    TYPE IS MEANS STDEVIATIONS CORRELATION;
+    NOBSERVATIONS ARE 823;
+
+VARIABLE:
+     NAMES ARE glad1 cheer1 happy1 glad2 cheer2 happy2;
+     usevariables are glad1-happy1;
+ANALYSIS: 
+    
+
+MODEL: 
+    PA BY glad1* cheer1 happy1;
+    PA@1;
+
+    [PA@0];

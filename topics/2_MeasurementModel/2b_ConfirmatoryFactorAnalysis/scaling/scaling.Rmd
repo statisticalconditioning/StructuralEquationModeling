@@ -184,11 +184,19 @@ ztable(pt, zebra = 2, caption = "Descriptive Statistics")
 
 ```
 
-### Mplus output using Correlation Table and first indicator fixed to 1.00
+### Mplus input file (`marker1.inp`)
 
 ```{r}
+file <-'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/marker1.inp'
+noquote(scan(file, what = 'character', sep = '\n'))
+```
+
+
+### Mplus output using Correlation Table and first indicator fixed to 1.00
+
+```{r , }
 file <-'topics/2_MeasurementModel/2b_ConfirmatoryFactorAnalysis/mplus/marker1.out'
-noquote(scan(file, what = 'character', sep = '\n', skip = 112, ,nlines = 17))
+noquote(scan(file, what = 'character', sep = '\n', skip = 112, nlines = 17))
 ```
 
 
